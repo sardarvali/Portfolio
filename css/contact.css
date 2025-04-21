@@ -1,0 +1,312 @@
+/* Contact Section Enhanced Styles */
+
+/* Contact Info Card */
+.contact-info-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.contact-header {
+    position: relative;
+    padding: 40px 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+}
+
+.contact-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/pattern.png');
+    opacity: 0.1;
+}
+
+.contact-header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contact-header p {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.contact-body {
+    padding: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.contact-item .icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover .icon {
+    background: var(--primary-color);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.contact-item .text h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.contact-item .text p,
+.contact-item .text a {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item .text a:hover {
+    color: var(--primary-color);
+}
+
+.contact-social {
+    margin-top: 30px;
+}
+
+.contact-social h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 50%;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
+}
+
+.social-icon:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+/* Contact Form Card */
+.contact-form-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.contact-form-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+}
+
+.input-group-text {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
+    border-right: none;
+}
+
+.form-control {
+    background: var(--input-bg);
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
+    color: var(--text-color);
+    padding: 12px 15px;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: var(--primary-color);
+    background: var(--input-bg-focus);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-submit {
+    margin-top: 30px;
+}
+
+.form-submit .btn {
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.form-submit .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Form validation styles */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: none;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Success message */
+.success-message {
+    display: none;
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.success-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .contact-form-card,
+    .contact-info-card {
+        padding: 25px;
+    }
+    
+    .contact-header {
+        padding: 30px 25px;
+    }
+    
+    .contact-item {
+        margin-bottom: 20px;
+    }
+    
+    .contact-item .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .contact-info-card,
+[data-theme="dark"] .contact-form-card {
+    background: rgba(30, 30, 40, 0.7);
+}
+
+[data-theme="dark"] .input-group-text {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .form-control {
+    background: rgba(30, 30, 40, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .form-control:focus {
+    background: rgba(30, 30, 40, 0.8);
+    border-color: var(--primary-color);
+}
+
+/* Contact form animations */
+.contact-form .form-group {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.contact-form .form-group.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-form .form-submit {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    transition-delay: 0.4s;
+}
+
+.contact-form .form-submit.animate {
+    opacity: 1;
+    transform: translateY(0);
+}

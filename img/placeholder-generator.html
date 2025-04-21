@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Placeholder Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .instructions {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .image-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        canvas {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 5px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .download-all {
+            background-color: #2196F3;
+            padding: 12px 20px;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+        .filename {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Image Placeholder Generator</h1>
+        
+        <div class="instructions">
+            <h2>Instructions:</h2>
+            <ol>
+                <li>Click "Download All Images" to download all placeholder images at once.</li>
+                <li>Or click individual "Download" buttons to save specific images.</li>
+                <li>Save the downloaded images to your portfolio's <code>img</code> folder.</li>
+                <li>Replace these placeholders with your actual project images later.</li>
+            </ol>
+        </div>
+        
+        <button id="downloadAllBtn" class="download-all">Download All Images</button>
+        
+        <div class="image-grid">
+            <!-- Profile Image -->
+            <div class="image-item">
+                <div class="filename">profile.jpg</div>
+                <canvas id="profile" width="400" height="400"></canvas>
+                <button onclick="downloadImage('profile')">Download</button>
+            </div>
+            
+            <!-- Featured Project Image -->
+            <div class="image-item">
+                <div class="filename">pet-adoption-featured.jpg</div>
+                <canvas id="pet-adoption-featured" width="800" height="500"></canvas>
+                <button onclick="downloadImage('pet-adoption-featured')">Download</button>
+            </div>
+            
+            <!-- Project 1 -->
+            <div class="image-item">
+                <div class="filename">project-1.jpg</div>
+                <canvas id="project-1" width="600" height="400"></canvas>
+                <button onclick="downloadImage('project-1')">Download</button>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="image-item">
+                <div class="filename">project-2.jpg</div>
+                <canvas id="project-2" width="600" height="400"></canvas>
+                <button onclick="downloadImage('project-2')">Download</button>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="image-item">
+                <div class="filename">project-3.jpg</div>
+                <canvas id="project-3" width="600" height="400"></canvas>
+                <button onclick="downloadImage('project-3')">Download</button>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="image-item">
+                <div class="filename">project-4.jpg</div>
+                <canvas id="project-4" width="600" height="400"></canvas>
+                <button onclick="downloadImage('project-4')">Download</button>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="image-item">
+                <div class="filename">project-5.jpg</div>
+                <canvas id="project-5" width="600" height="400"></canvas>
+                <button onclick="downloadImage('project-5')">Download</button>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="image-item">
+                <div class="filename">project-6.jpg</div>
+                <canvas id="project-6" width="600" height="400"></canvas>
+                <button onclick="downloadImage('project-6')">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration for each canvas
+        const canvasConfig = {
+            'profile': {
+                title: 'Syed Sardar Valli',
+                subtitle: 'Cloud Computing Specialist',
+                bgColor: '#3498db',
+                textColor: '#ffffff',
+                icon: '👨‍💻'
+            },
+            'pet-adoption-featured': {
+                title: 'Pet Adoption System',
+                subtitle: 'Featured Project',
+                bgColor: '#2c3e50',
+                textColor: '#ffffff',
+                icon: '🐾'
+            },
+            'project-1': {
+                title: 'Pet Adoption System',
+                subtitle: 'Web Development',
+                bgColor: '#3498db',
+                textColor: '#ffffff',
+                icon: '🐾'
+            },
+            'project-2': {
+                title: 'Gail Demo App',
+                subtitle: 'Mobile App',
+                bgColor: '#e74c3c',
+                textColor: '#ffffff',
+                icon: '⛽'
+            },
+            'project-3': {
+                title: 'ChatApp',
+                subtitle: 'Mobile App',
+                bgColor: '#27ae60',
+                textColor: '#ffffff',
+                icon: '💬'
+            },
+            'project-4': {
+                title: 'Restaurant Management',
+                subtitle: 'Web Development',
+                bgColor: '#f39c12',
+                textColor: '#ffffff',
+                icon: '🍽️'
+            },
+            'project-5': {
+                title: 'Calculator App',
+                subtitle: 'Web Development',
+                bgColor: '#9b59b6',
+                textColor: '#ffffff',
+                icon: '🧮'
+            },
+            'project-6': {
+                title: 'Entertainment Hub',
+                subtitle: 'Web Development',
+                bgColor: '#1abc9c',
+                textColor: '#ffffff',
+                icon: '🎬'
+            }
+        };
+
+        // Draw placeholder images
+        function drawPlaceholder(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const config = canvasConfig[canvasId];
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, config.bgColor);
+            gradient.addColorStop(1, adjustColor(config.bgColor, -30));
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add pattern
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+            for (let i = 0; i < canvas.width; i += 20) {
+                for (let j = 0; j < canvas.height; j += 20) {
+                    ctx.fillRect(i, j, 10, 10);
+                }
+            }
+            
+            // Add circle
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Icon
+            const iconSize = Math.min(canvas.width, canvas.height) * 0.2;
+            ctx.font = `${iconSize}px Arial`;
+            ctx.fillStyle = config.textColor;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(config.icon, canvas.width / 2, canvas.height / 2 - (config.subtitle ? iconSize/2 : 0));
+            
+            // Title
+            const titleSize = Math.min(canvas.width, canvas.height) * 0.08;
+            ctx.font = `bold ${titleSize}px Arial`;
+            ctx.fillText(config.title, canvas.width / 2, canvas.height / 2 + (config.subtitle ? titleSize : 0));
+            
+            // Subtitle
+            if (config.subtitle) {
+                const subtitleSize = Math.min(canvas.width, canvas.height) * 0.05;
+                ctx.font = `${subtitleSize}px Arial`;
+                ctx.fillText(config.subtitle, canvas.width / 2, canvas.height / 2 + titleSize + subtitleSize);
+            }
+            
+            // Border
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.lineWidth = 6;
+            ctx.strokeRect(3, 3, canvas.width - 6, canvas.height - 6);
+        }
+        
+        // Helper function to adjust color brightness
+        function adjustColor(color, amount) {
+            return '#' + color.replace(/^#/, '').replace(/../g, color => 
+                ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2)
+            );
+        }
+
+        // Download image function
+        function downloadImage(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = `${canvasId}.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Download all images
+        document.getElementById('downloadAllBtn').addEventListener('click', function() {
+            Object.keys(canvasConfig).forEach((canvasId, index) => {
+                setTimeout(() => downloadImage(canvasId), index * 300);
+            });
+        });
+
+        // Initialize all canvases when page loads
+        window.onload = function() {
+            Object.keys(canvasConfig).forEach(canvasId => {
+                drawPlaceholder(canvasId);
+            });
+        };
+    </script>
+</body>
+</html>

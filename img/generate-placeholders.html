@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Placeholder Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .placeholder {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .download-all {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Placeholder Image Generator</h1>
+        <p>Click on each button to download the corresponding placeholder image.</p>
+        
+        <button class="download-all" id="downloadAll">Download All Images</button>
+        
+        <div class="image-container">
+            <div class="placeholder">
+                <canvas id="profile" width="400" height="400"></canvas><br>
+                <button onclick="downloadImage('profile')">Download Profile Image</button>
+            </div>
+            
+            <div class="placeholder">
+                <canvas id="pet-adoption-featured" width="800" height="500"></canvas><br>
+                <button onclick="downloadImage('pet-adoption-featured')">Download Pet Adoption Featured</button>
+            </div>
+            
+            <div class="placeholder">
+                <canvas id="project-1" width="600" height="400"></canvas><br>
+                <button onclick="downloadImage('project-1')">Download Project 1 (Pet Adoption)</button>
+            </div>
+            
+            <div class="placeholder">
+                <canvas id="project-2" width="600" height="400"></canvas><br>
+                <button onclick="downloadImage('project-2')">Download Project 2 (Gail Demo App)</button>
+            </div>
+            
+            <div class="placeholder">
+                <canvas id="project-3" width="600" height="400"></canvas><br>
+                <button onclick="downloadImage('project-3')">Download Project 3 (ChatApp)</button>
+            </div>
+            
+            <div class="placeholder">
+                <canvas id="project-4" width="600" height="400"></canvas><br>
+                <button onclick="downloadImage('project-4')">Download Project 4 (Restaurant)</button>
+            </div>
+            
+            <div class="placeholder">
+                <canvas id="project-5" width="600" height="400"></canvas><br>
+                <button onclick="downloadImage('project-5')">Download Project 5 (Calculator)</button>
+            </div>
+            
+            <div class="placeholder">
+                <canvas id="project-6" width="600" height="400"></canvas><br>
+                <button onclick="downloadImage('project-6')">Download Project 6 (Entertainment)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration for each canvas
+        const canvasConfig = {
+            'profile': {
+                title: 'Profile Photo',
+                bgColor: '#3498db',
+                textColor: '#ffffff',
+                icon: '👨‍💻'
+            },
+            'pet-adoption-featured': {
+                title: 'Pet Adoption System',
+                subtitle: 'Featured Project',
+                bgColor: '#2c3e50',
+                textColor: '#ffffff',
+                icon: '🐾'
+            },
+            'project-1': {
+                title: 'Pet Adoption System',
+                bgColor: '#3498db',
+                textColor: '#ffffff',
+                icon: '🐾'
+            },
+            'project-2': {
+                title: 'Gail Demo App',
+                bgColor: '#e74c3c',
+                textColor: '#ffffff',
+                icon: '⛽'
+            },
+            'project-3': {
+                title: 'ChatApp',
+                bgColor: '#27ae60',
+                textColor: '#ffffff',
+                icon: '💬'
+            },
+            'project-4': {
+                title: 'Restaurant Management',
+                bgColor: '#f39c12',
+                textColor: '#ffffff',
+                icon: '🍽️'
+            },
+            'project-5': {
+                title: 'Calculator App',
+                bgColor: '#9b59b6',
+                textColor: '#ffffff',
+                icon: '🧮'
+            },
+            'project-6': {
+                title: 'Entertainment Hub',
+                bgColor: '#1abc9c',
+                textColor: '#ffffff',
+                icon: '🎬'
+            }
+        };
+
+        // Function to draw a placeholder image
+        function drawPlaceholder(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            const config = canvasConfig[canvasId];
+            
+            // Background
+            ctx.fillStyle = config.bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add some design elements
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width, canvas.height) * 0.4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Add diagonal lines for design
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 15;
+            for (let i = -canvas.width; i < canvas.width * 2; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i + canvas.height, canvas.height);
+                ctx.stroke();
+            }
+            
+            // Icon
+            ctx.font = `${Math.min(canvas.width, canvas.height) * 0.2}px Arial`;
+            ctx.fillStyle = config.textColor;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(config.icon, canvas.width / 2, canvas.height / 2 - (config.subtitle ? 40 : 20));
+            
+            // Title
+            ctx.font = `bold ${Math.min(canvas.width, canvas.height) * 0.08}px Arial`;
+            ctx.fillText(config.title, canvas.width / 2, canvas.height / 2 + 40);
+            
+            // Subtitle if exists
+            if (config.subtitle) {
+                ctx.font = `${Math.min(canvas.width, canvas.height) * 0.05}px Arial`;
+                ctx.fillText(config.subtitle, canvas.width / 2, canvas.height / 2 + 90);
+            }
+            
+            // Border
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.lineWidth = 10;
+            ctx.strokeRect(5, 5, canvas.width - 10, canvas.height - 10);
+        }
+
+        // Function to download an image
+        function downloadImage(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = `${canvasId}.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.click();
+        }
+
+        // Draw all placeholders on page load
+        window.onload = function() {
+            for (const canvasId in canvasConfig) {
+                drawPlaceholder(canvasId);
+            }
+            
+            // Download all button
+            document.getElementById('downloadAll').addEventListener('click', function() {
+                for (const canvasId in canvasConfig) {
+                    setTimeout(() => downloadImage(canvasId), 300 * Object.keys(canvasConfig).indexOf(canvasId));
+                }
+            });
+        };
+    </script>
+</body>
+</html>
