@@ -3,18 +3,7 @@
 A modern, professional portfolio website showcasing Syed Sardar Valli's skills, projects, and achievements. The website features a responsive design with modern UI elements.
 
 Link: https://syed-sardar-vali.web.app/
-## Project Structure
 
-```
-portfolio-website/
-├── index.html          # Main HTML file
-├── css/
-│   ├── style.css       # Main stylesheet
-│   └── animations.css  # Animation styles
-├── js/
-│   └── main.js         # JavaScript functionality
-└── img/                # Image directory (add your images here)
-```
 
 ## Features
 
