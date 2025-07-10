@@ -215,19 +215,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check for saved theme preference
         if (localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-mode');
-            themeToggle.querySelector('.theme-toggle-ball').style.left = '35px';
+            // CSS will handle ball position and icon visibility based on body.dark-mode
         }
         
         themeToggle.addEventListener('click', function() {
             body.classList.toggle('dark-mode');
             
             if (body.classList.contains('dark-mode')) {
-                themeToggle.querySelector('.theme-toggle-ball').style.left = '35px';
                 localStorage.setItem('theme', 'dark');
             } else {
-                themeToggle.querySelector('.theme-toggle-ball').style.left = '5px';
                 localStorage.setItem('theme', 'light');
             }
+            // CSS will handle ball position and icon visibility based on body.dark-mode
         });
     }
 

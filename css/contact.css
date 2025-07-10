@@ -10,7 +10,7 @@
     /* border: 1px solid var(--cloud-gray-light); */ /* Optional subtle border */
     /* backdrop-filter: blur(10px); Removed for cleaner look */
 }
-.dark-theme .contact-info-card {
+body.dark-mode .contact-info-card { /* Changed .dark-theme to body.dark-mode */
     background: var(--bg-dark-secondary);
     /* border: 1px solid rgba(var(--text-light-rgb), 0.1); */
 }
@@ -21,7 +21,7 @@
     background: var(--gradient-sky-accent); /* Softer gradient */
     color: var(--text-dark-primary); /* Ensure contrast on lighter gradient */
 }
-.dark-theme .contact-header {
+body.dark-mode .contact-header { /* Changed .dark-theme to body.dark-mode */
     background: linear-gradient(135deg, var(--bg-dark-secondary) 0%, var(--bg-dark-primary) 100%);
     color: var(--text-light-primary);
 }
@@ -49,30 +49,30 @@
 
 .contact-header p {
     font-size: 0.9rem;
-    opacity: 0.8; /* Slightly less opacity for better readability */
+    opacity: 0.8;
 }
 
 .contact-body {
-    padding: var(--spacing-lg) var(--spacing-md); /* Use theme spacing */
+    padding: var(--spacing-lg) var(--spacing-md);
 }
 
 .contact-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: var(--spacing-lg); /* More space between items */
+    margin-bottom: var(--spacing-lg);
 }
 
 .contact-item .icon {
-    width: 40px; /* Adjusted size */
+    width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(var(--interactive-blue-rgb), 0.1); /* Use interactive blue */
+    background: rgba(var(--interactive-blue-rgb), 0.1);
     color: var(--interactive-blue);
-    border-radius: var(--border-radius-md); /* Consistent rounding */
+    border-radius: var(--border-radius-md);
     margin-right: var(--spacing-md);
-    font-size: 1.1rem; /* Adjusted icon size */
+    font-size: 1.1rem;
     transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 .dark-theme .contact-item .icon {
@@ -87,7 +87,7 @@
 }
 
 .contact-item .text h4 {
-    font-size: 1rem; /* Adjusted size */
+    font-size: 1rem;
     font-weight: 500;
     margin-bottom: var(--spacing-xs);
     color: var(--text-dark-primary);
@@ -130,9 +130,9 @@
     color: var(--text-light-primary);
 }
 
-.social-icons { /* Styles for these are primarily in style.css now */
+.social-icons {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md); /* Increased gap slightly for better visual separation */
 }
 
 /* .social-icon rules are in style.css and updated there */
@@ -285,15 +285,15 @@
 @media (max-width: 768px) {
     .contact-form-card,
     .contact-info-card {
-        padding: 25px;
+        padding: var(--spacing-lg); /* Use theme variable */
     }
     
     .contact-header {
-        padding: 30px 25px;
+        padding: var(--spacing-lg) var(--spacing-md); /* Use theme variables */
     }
     
     .contact-item {
-        margin-bottom: 20px;
+        margin-bottom: var(--spacing-md); /* Use theme variable */
     }
     
     .contact-item .icon {

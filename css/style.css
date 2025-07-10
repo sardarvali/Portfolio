@@ -5,6 +5,7 @@
     --sky-blue-medium: #B9E2FB; /* Soft, clear sky blue */
     --sky-blue-medium-rgb: 185,226,251; /* RGB for sky-blue-medium */
     --sky-blue-deep: #72C2F3;   /* Deeper, vibrant sky blue - Primary Accent */
+    --sky-blue-deep-rgb: 114,194,251; /* RGB for sky-blue-deep */
     
     --cloud-white: #FFFFFF;
     --cloud-white-soft: #F7F9FA; /* Slightly off-white, like soft clouds */
@@ -401,7 +402,7 @@ img {
     border-bottom: 1px solid transparent; /* For scrolled state */
 }
 
-.dark-theme .navbar {
+body.dark-mode .navbar { /* Changed .dark-theme to body.dark-mode */
     background-color: rgba(29, 29, 31, 0.7); /* Dark translucent */
     border-bottom: 1px solid transparent;
 }
@@ -412,7 +413,7 @@ img {
     box-shadow: 0 0.5px 0 rgba(0,0,0,0.12); /* Subtle bottom border like Apple */
 }
 
-.dark-theme .navbar-scrolled {
+body.dark-mode .navbar-scrolled { /* Changed .dark-theme to body.dark-mode */
     background-color: rgba(20, 20, 22, 0.85);
     box-shadow: 0 0.5px 0 rgba(255,255,255,0.12);
 }
@@ -423,14 +424,14 @@ img {
     color: var(--dark-color) !important;
     transition: color var(--transition-fast), opacity var(--transition-fast);
 }
-.dark-theme .navbar-brand {
+body.dark-mode .navbar-brand { /* Changed .dark-theme to body.dark-mode */
     color: var(--text-light) !important;
 }
 .navbar-brand:hover {
     color: var(--primary-color) !important;
     opacity: 0.8;
 }
-.dark-theme .navbar-brand:hover {
+body.dark-mode .navbar-brand:hover { /* Changed .dark-theme to body.dark-mode */
     color: var(--primary-color) !important;
     opacity: 0.8;
 }
@@ -456,12 +457,12 @@ img {
     color: var(--primary-color) !important;
     background-color: rgba(0, 122, 255, 0.1); /* Subtle background on hover/active */
 }
-.dark-theme .navbar-nav .nav-link {
+body.dark-mode .navbar-nav .nav-link { /* Changed .dark-theme to body.dark-mode */
     color: var(--text-light) !important;
     opacity: 0.8;
 }
-.dark-theme .navbar-nav .nav-link:hover,
-.dark-theme .navbar-nav .nav-link.active {
+body.dark-mode .navbar-nav .nav-link:hover, /* Changed .dark-theme to body.dark-mode */
+body.dark-mode .navbar-nav .nav-link.active { /* Changed .dark-theme to body.dark-mode */
     color: var(--primary-color) !important;
     opacity: 1;
     background-color: rgba(0, 122, 255, 0.2);
@@ -497,7 +498,7 @@ img {
     border-radius: 1px;
     transition: transform var(--transition-normal), opacity var(--transition-fast);
 }
-.dark-theme .toggler-icon span {
+body.dark-mode .toggler-icon span { /* Changed .dark-theme to body.dark-mode */
     background-color: var(--text-light);
 }
 
@@ -513,47 +514,70 @@ img {
     transform: translateY(-9px) rotate(-45deg);
 }
 
+/* Theme Toggle - Apple Style (Updated from previous plan) */
 .theme-toggle {
-    width: 60px;
-    height: 30px;
-    background-color: rgba(10, 132, 255, 0.1);
-    border-radius: 30px;
+    width: 50px;
+    height: 28px;
+    background-color: var(--medium-light-gray);
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
+    padding: 3px;
     position: relative;
     cursor: pointer;
+    transition: background-color var(--transition-normal);
+}
+body.dark-mode .theme-toggle { /* Changed .dark-theme to body.dark-mode */
+    background-color: #3A3A3C; /* Darker gray for dark mode */
 }
 
 .theme-toggle i {
-    font-size: 14px;
-    color: var(--dark-color);
+    font-size: 0.8rem;
+    color: var(--text-secondary); /* Default icon color */
     z-index: var(--z-normal);
+    transition: color var(--transition-normal);
+    width: 22px;
+    text-align: center;
 }
 
+/* Specific icon colors if needed, or rely on general color for active state */
 .theme-toggle .fa-sun {
-    color: #f1c40f;
+    /* color: #848388; default sun color, can be overridden by active state */
+}
+body.dark-mode .theme-toggle .fa-sun {
+    color: #FFD580; /* Brighter sun for dark mode active */
 }
 
 .theme-toggle .fa-moon {
-    color: #2c3e50;
+    color: #4A4A4A; /* Moon color for light mode active */
+}
+body.dark-mode .theme-toggle .fa-moon {
+   /* color: #848388; default moon color */
 }
 
 .theme-toggle-ball {
     position: absolute;
-    left: 5px;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
+    left: 3px;
+    top: 3px;
+    width: 22px;
+    height: 22px;
+    background-color: var(--cloud-white);
     border-radius: 50%;
-    transition: var(--transition-normal);
-    box-shadow: var(--box-shadow-sm);
+    transition: transform var(--transition-normal);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 body.dark-mode .theme-toggle-ball {
-    left: 35px;
+    transform: translateX(22px);
 }
+/* Icon visibility based on theme */
+body:not(.dark-mode) .theme-toggle .fa-sun { display: none; }
+body:not(.dark-mode) .theme-toggle .fa-moon { display: block; }
+
+body.dark-mode .theme-toggle .fa-sun { display: block; }
+body.dark-mode .theme-toggle .fa-moon { display: none; }
+
 
 /* Hero Section */
 .hero-section {
@@ -853,12 +877,20 @@ body.dark-mode .theme-toggle-ball {
 
 /* About Section - Cloud Theme Update */
 #about {
-    background: var(--gradient-sky-light); /* Apply a soft sky gradient */
+    background: var(--gradient-sky-light);
 }
 .dark-theme #about {
-    /* For dark mode, could use a darker gradient or a solid dark color from the palette */
     background: var(--bg-dark-secondary);
 }
+
+/* Skills Section - Cloud Theme Update */
+#skills {
+    background: var(--gradient-sky-light); /* Applying similar subtle gradient */
+}
+body.dark-mode #skills {
+    background: var(--bg-dark-secondary); /* Consistent dark mode background */
+}
+
 
 .about-img {
     position: relative;
@@ -979,88 +1011,130 @@ body.dark-mode .theme-toggle-ball {
 }
 
 .about-text {
-    padding: 20px;
+    padding: var(--spacing-lg); /* More generous padding */
+}
+.dark-theme .about-text {
+    /* No specific background change, inherits from section */
 }
 
 .about-tagline {
     display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    padding: 5px 15px;
-    background-color: rgba(10, 132, 255, 0.1);
-    border-radius: 20px;
+    font-size: 0.9rem; /* Adjusted size */
+    font-weight: 500;
+    color: var(--interactive-blue); /* Use theme color */
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
+    padding: var(--spacing-xs) var(--spacing-md); /* Use theme spacing */
+    background-color: rgba(var(--interactive-blue-rgb), 0.1); /* Use theme color with alpha */
+    border-radius: var(--border-radius-xl); /* Pill shape */
+}
+.dark-theme .about-tagline {
+    color: var(--sky-blue-deep);
+    background-color: rgba(var(--sky-blue-deep-rgb, 114,194,243), 0.15); /* Define --sky-blue-deep-rgb if needed */
 }
 
 .about-text h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: var(--dark-color);
+    font-size: 1.75rem; /* Adjusted for hierarchy */
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
+    color: var(--text-dark-primary);
+}
+.dark-theme .about-text h3 {
+    color: var(--text-light-primary);
 }
 
 .about-text p {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #555;
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
+    font-size: 1rem; /* Standard body text size */
+    color: var(--text-dark-secondary); /* Softer text color */
+    line-height: 1.7; /* Improved readability */
+}
+.dark-theme .about-text p {
+    color: var(--text-light-secondary);
 }
 
 .about-stats {
     display: flex;
     justify-content: space-between;
-    margin: 30px 0;
+    margin: var(--spacing-lg) 0; /* Use theme spacing */
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--cloud-gray-light);
+    border-bottom: 1px solid var(--cloud-gray-light);
+}
+.dark-theme .about-stats {
+    border-top: 1px solid rgba(var(--text-light-rgb), 0.1);
+    border-bottom: 1px solid rgba(var(--text-light-rgb), 0.1);
 }
 
 .stat-item {
     text-align: center;
+    padding: 0 var(--spacing-sm);
 }
 
 .stat-number {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 5px;
+    font-size: 2rem; /* Adjusted size */
+    font-weight: 600;
+    color: var(--interactive-blue); /* Use theme color */
+    margin-bottom: var(--spacing-xs); /* Use theme spacing */
     line-height: 1;
+}
+.dark-theme .stat-number {
+    color: var(--sky-blue-deep);
 }
 
 .stat-text {
-    font-size: 14px;
-    color: #555;
+    font-size: 0.8rem; /* Adjusted size */
+    color: var(--text-dark-secondary);
+}
+.dark-theme .stat-text {
+    color: var(--text-light-secondary);
 }
 
 .about-contact {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: var(--spacing-md); /* Use theme spacing */
+    margin-bottom: var(--spacing-lg); /* Use theme spacing */
 }
 
-.contact-item {
+.contact-item { /* Assuming this is for .about-contact .contact-item */
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--spacing-sm); /* Use theme spacing */
+    background-color: rgba(var(--interactive-blue-rgb),0.05);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+}
+.dark-theme .contact-item {
+    background-color: rgba(var(--sky-blue-deep-rgb, 114,194,243),0.1);
 }
 
+
 .contact-item i {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(10, 132, 255, 0.1);
-    color: var(--primary-color);
+    width: 36px; /* Adjusted size */
+    height: 36px;
+    background-color: transparent; /* Icon bg handled by .contact-item */
+    color: var(--interactive-blue);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 1rem; /* Adjusted size */
+}
+.dark-theme .contact-item i {
+    color: var(--sky-blue-deep);
 }
 
 .contact-item span {
-    font-size: 14px;
-    color: #555;
+    font-size: 0.9rem; /* Adjusted size */
+    color: var(--text-dark-secondary);
+}
+.dark-theme .contact-item span {
+    color: var(--text-light-secondary);
 }
 
 .about-btns {
     display: flex;
-    gap: 15px;
+    gap: var(--spacing-md); /* Use theme spacing */
+    margin-top: var(--spacing-lg); /* Add margin top */
 }
 
 .shape-divider {

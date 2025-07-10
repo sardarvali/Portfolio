@@ -1,58 +1,72 @@
-/* Modern Projects Section Styles - Based on Reference Images */
+/* Modern Projects Section Styles - Phase 2 Spacing & Theme Update */
 
-/* Section Title */
-.projects-section .section-title {
-    margin-bottom: 3rem;
+/* Section Title (Assuming .section-title from style.css is used) */
+.projects-section .section-title { /* If specific overrides needed */
+    margin-bottom: var(--spacing-xl);
 }
 
-.projects-section .subtitle {
-    color: var(--primary-color);
-    font-weight: 600;
-    font-size: 1rem;
+.projects-section .subtitle { /* If specific overrides needed */
+    color: var(--interactive-blue); /* Use theme color */
+    font-weight: 500;
+    font-size: 0.9rem;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--spacing-sm); /* Use theme spacing */
 }
 
 /* Filter Buttons */
 .project-filters {
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--spacing-lg); /* Use theme spacing */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--spacing-sm); /* Use theme spacing */
 }
 
-.filter-btn {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    color: #495057;
-    padding: 0.5rem 1.25rem;
-    border-radius: 50px;
+.filter-btn { /* Aligning with global button styles where possible, but keeping distinct look */
+    background-color: var(--cloud-white-soft);
+    border: 1px solid var(--cloud-gray-medium);
+    color: var(--text-dark-secondary);
+    padding: var(--spacing-sm) var(--spacing-md); /* Use theme spacing */
+    border-radius: var(--border-radius-xl); /* Pill shape like other buttons */
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
     cursor: pointer;
+}
+body.dark-mode .filter-btn {
+    background-color: var(--bg-dark-secondary);
+    border-color: rgba(var(--text-light-rgb), 0.2);
+    color: var(--text-light-secondary);
 }
 
 .filter-btn.active, 
 .filter-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
+    background-color: var(--interactive-blue);
+    color: var(--cloud-white);
+    border-color: var(--interactive-blue);
+    transform: translateY(-1px);
 }
+body.dark-mode .filter-btn.active,
+body.dark-mode .filter-btn:hover {
+    background-color: var(--sky-blue-deep);
+    color: var(--text-dark-primary);
+    border-color: var(--sky-blue-deep);
+}
+
 
 /* Project Cards - Modern Style */
 .project-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: var(--spacing-lg); /* Increased gap */
 }
 
 .project-item {
-    flex: 0 0 calc(33.333% - 1rem);
-    max-width: calc(33.333% - 1rem);
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
+    /* flex calculations might need review based on new gap */
+    flex: 0 0 calc(33.333% - (var(--spacing-lg) * 2 / 3)); /* Adjust flex-basis for new gap */
+    max-width: calc(33.333% - (var(--spacing-lg) * 2 / 3));
+    margin-bottom: var(--spacing-lg); /* Use theme spacing */
+    transition: opacity var(--transition-normal), transform var(--transition-normal); /* Keep AOS transitions in mind */
 }
 
 .project-card {
@@ -68,12 +82,12 @@
     transform: translateY(-8px);
     box-shadow: var(--box-shadow-lg);
 }
-.dark-theme .project-card {
+body.dark-mode .project-card { /* Changed .dark-theme to body.dark-mode */
     background-color: var(--bg-dark-secondary); /* Use theme variable */
     box-shadow: none; /* Often dark mode cards have less pronounced shadows or rely on borders */
     border: 1px solid rgba(255,255,255,0.1); /* Subtle border for dark mode */
 }
-.dark-theme .project-card:hover {
+body.dark-mode .project-card:hover { /* Changed .dark-theme to body.dark-mode */
      box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* Darker, more prominent shadow on hover for dark */
 }
 
