@@ -68,9 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize AOS animations
     AOS.init({
-        duration: 1000,
+        duration: 800, // Slightly shorter default duration
+        easing: 'ease-out-cubic', // Smoother easing
         once: true,
-        mirror: false
+        mirror: false,
+        // offset: 80, // Consider adjusting offset if elements appear too late/early
+        // anchorPlacement: 'top-bottom',
     });
 
     // Navbar scroll effect

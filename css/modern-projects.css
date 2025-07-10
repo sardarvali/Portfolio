@@ -57,38 +57,60 @@
 
 .project-card {
     position: relative;
-    border-radius: var(--border-radius-lg); /* Use CSS variable */
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    background-color: #fff; /* Add a default background for light mode */
-    box-shadow: var(--box-shadow-md); /* Use CSS variable */
+    background-color: var(--cloud-white); /* Use theme variable */
+    box-shadow: var(--box-shadow-md);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .project-card:hover {
-    transform: translateY(-8px); /* Slightly less translation */
-    box-shadow: var(--box-shadow-lg); /* Use CSS variable for larger shadow */
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-lg);
 }
 .dark-theme .project-card {
-    background-color: #2C2C2E; /* Darker card background for dark mode */
-    box-shadow: var(--box-shadow-md); /* Ensure shadows are visible in dark mode if needed */
+    background-color: var(--bg-dark-secondary); /* Use theme variable */
+    box-shadow: none; /* Often dark mode cards have less pronounced shadows or rely on borders */
+    border: 1px solid rgba(255,255,255,0.1); /* Subtle border for dark mode */
+}
+.dark-theme .project-card:hover {
+     box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* Darker, more prominent shadow on hover for dark */
 }
 
 
 .project-img {
     position: relative;
     overflow: hidden;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0; /* Match card rounding if image is at the top */
 }
 
 .project-img img {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform var(--transition-slow) var(--transition-normal); /* Smoother, longer transition */
 }
 
 .project-card:hover .project-img img {
-    transform: scale(1.1);
+    transform: scale(1.05); /* Slightly less aggressive zoom */
 }
+
+.project-card:hover .project-img::after { /* Subtle glow/border effect */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    box-shadow: inset 0 0 15px rgba(var(--interactive-blue-rgb, 0,122,255), 0.3); /* Use RGB of interactive-blue */
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+.project-card:hover .project-img::after {
+    opacity: 1;
+}
+
 
 .project-overlay {
     position: absolute;
@@ -96,61 +118,74 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(var(--primary-rgb), 0.9), rgba(var(--secondary-rgb), 0.9));
+    /* background: linear-gradient(45deg, rgba(var(--primary-rgb), 0.9), rgba(var(--secondary-rgb), 0.9)); */
+    background: linear-gradient(transparent, rgba(0,0,0,0.6)); /* Simpler overlay for text readability */
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: opacity var(--transition-normal);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Align content to bottom or center */
+    justify-content: flex-end; /* Example: text at bottom */
+    padding: var(--spacing-md);
 }
 
 .project-card:hover .project-overlay {
-    opacity: 0.95;
+    opacity: 1; /* Make it fully visible on hover */
 }
 
 .project-content {
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    padding: var(--spacing-md); /* Use theme spacing */
+    background-color: var(--cloud-white); /* Ensure content area has a background */
+}
+.dark-theme .project-content {
+    background-color: var(--bg-dark-secondary);
 }
 
+
 .project-content h4 {
-    margin-bottom: 0.75rem;
-    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600; /* Keep slightly bolder for titles */
     font-size: 1.1rem;
-    color: #212529;
+    color: var(--text-dark-primary);
+}
+.dark-theme .project-content h4 {
+    color: var(--text-light-primary);
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
 }
 
 .project-tags span {
-    background-color: #f8f9fa;
-    color: #495057;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.7rem;
+    background-color: var(--sky-blue-light); /* Use theme color */
+    color: var(--interactive-blue); /* Use theme color */
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem; /* Slightly larger for readability */
     font-weight: 500;
+}
+.dark-theme .project-tags span {
+    background-color: var(--bg-dark-primary); /* Darker tags for dark mode */
+    color: var(--sky-blue-medium);
 }
 
 .project-content p {
     font-size: 0.9rem;
-    color: #6c757d;
-    margin-bottom: 1.25rem;
-    line-height: 1.5;
+    color: var(--text-dark-secondary); /* Use theme color */
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6; /* Improved line height */
     flex-grow: 1;
+}
+.dark-theme .project-content p {
+    color: var(--text-light-secondary);
 }
 
 .project-links {
     display: flex;
-    gap: 0.75rem;
-    margin-top: auto;
+    gap: var(--spacing-sm);
+    margin-top: auto; /* Pushes to bottom if card is flex container */
 }
 
 .project-links a {
@@ -158,69 +193,94 @@
     padding: 0.4rem 0.75rem;
 }
 
+.project-category, .project-date {
+    position: absolute;
+    top: var(--spacing-md);
+    background-color: rgba(var(--text-dark-primary-rgb, 29,29,31), 0.7); /* Fallback for --text-dark-primary-rgb */
+    color: var(--cloud-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 2; /* Above image */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.dark-theme .project-category, .dark-theme .project-date {
+    background-color: rgba(var(--text-light-rgb, 247,249,250), 0.15);
+    color: var(--text-light-secondary);
+}
+
+
+.project-category {
+    right: var(--spacing-md);
+}
+
+.project-date {
+    left: var(--spacing-md);
+    background-color: rgba(var(--text-dark-primary-rgb, 29,29,31), 0.5); /* Slightly more subtle */
+}
+.dark-theme .project-date {
+    background-color: rgba(var(--text-light-rgb, 247,249,250), 0.1);
+}
+
+
 /* Project Details Modal */
-.modal-content {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
+/* Base .modal-content, .modal-header, .modal-body, .modal-footer styles are now primarily in style.css */
+/* This file will contain overrides or additions specific to PROJECT modals if needed. */
 
-.modal-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-}
-
-.modal-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+/* Example: If project modal titles need specific gradient (re-evaluate if too flashy for Apple theme) */
+/* .projects-section .modal-title {
+    background: linear-gradient(45deg, var(--interactive-blue), var(--sky-blue-deep));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-.modal-body {
-    padding: 2rem;
-}
+} */
 
 .project-modal-img {
-    border-radius: 15px;
+    border-radius: var(--border-radius-md); /* Consistent rounding */
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(0);
-    transition: transform 0.3s ease;
+    margin-bottom: var(--spacing-lg); /* Increased space */
+    box-shadow: var(--box-shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .project-modal-img:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02); /* Subtle lift and scale */
+    box-shadow: var(--box-shadow-lg);
 }
 
 .project-modal-img img {
     width: 100%;
     height: auto;
-    transition: transform 0.5s ease;
+    display: block;
+    transition: transform var(--transition-slow);
 }
-
-.project-modal-img:hover img {
-    transform: scale(1.05);
-}
+/* .project-modal-img:hover img { transform: scale(1.05); } */ /* Optional: redundant if card hover is enough */
 
 .project-description {
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-lg);
     line-height: 1.7;
+    color: var(--text-dark-secondary);
+}
+.dark-theme .project-description {
+    color: var(--text-light-secondary);
 }
 
-.project-features {
-    margin-bottom: 2rem;
+.project-features { /* Container for features list */
+    margin-bottom: var(--spacing-lg);
 }
 
-.project-features h4 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+.project-features h4, /* Subheadings like "Key Features", "Technologies Used" */
+.tech-stack h4 {
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md); /* More space under these subheadings */
+    color: var(--text-dark-primary);
+    font-weight: 500;
+}
+.dark-theme .project-features h4,
+.dark-theme .tech-stack h4 {
+    color: var(--text-light-primary);
 }
 
 .feature-list {
@@ -231,58 +291,62 @@
 
 .feature-list li {
     position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.8rem;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.3s ease;
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark-secondary);
+    /* AOS should handle entrance animations if applied in HTML */
+}
+.dark-theme .feature-list li {
+    color: var(--text-light-secondary);
 }
 
 .feature-list li::before {
-    content: '→';
+    content: '•'; /* Standard bullet */
     position: absolute;
     left: 0;
-    color: var(--primary-color);
+    color: var(--interactive-blue);
+    font-size: 1.2em;
+    line-height: inherit; /* Aligns bullet with text */
 }
 
-.tech-stack {
-    margin-top: 2rem;
+.tech-stack { /* Wrapper for "Technologies Used" title and tags */
+    margin-top: var(--spacing-lg);
 }
 
-.tech-stack h4 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.tech-tags {
+.tech-tags { /* Container for tech tags in modal */
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--spacing-sm);
 }
 
-.tech-tag {
-    padding: 0.5rem 1rem;
-    background: rgba(var(--primary-rgb), 0.1);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    color: var(--text-color);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: scale(0.8);
+.tech-tag { /* Individual tech tag in modal */
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--sky-blue-light);
+    border-radius: var(--border-radius-md);
+    font-size: 0.85rem;
+    color: var(--interactive-blue);
+    font-weight: 500;
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+.dark-theme .tech-tag {
+    background: var(--bg-dark-primary);
+    color: var(--sky-blue-medium);
+    border: 1px solid rgba(var(--sky-blue-medium-rgb, 185,226,251), 0.3); /* Define --sky-blue-medium-rgb if using */
 }
 
 .tech-tag:hover {
-    background: var(--primary-color);
-    color: var(--bg-color);
+    background: var(--interactive-blue);
+    color: var(--cloud-white);
     transform: translateY(-2px);
 }
-
-.modal-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
+.dark-theme .tech-tag:hover {
+    background: var(--sky-blue-deep);
+    color: var(--text-dark-primary); /* Ensure contrast */
+    border-color: transparent; /* Remove border on hover if it looks better */
 }
 
+/* .modal-footer styling is in style.css */
+/* .modal-btn specific styling if needed, otherwise Bootstrap/theme .btn styles apply */
 .modal-btn {
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
