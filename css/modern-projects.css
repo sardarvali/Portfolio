@@ -57,16 +57,22 @@
 
 .project-card {
     position: relative;
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg); /* Use CSS variable */
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    background-color: #fff; /* Add a default background for light mode */
+    box-shadow: var(--box-shadow-md); /* Use CSS variable */
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px); /* Slightly less translation */
+    box-shadow: var(--box-shadow-lg); /* Use CSS variable for larger shadow */
 }
+.dark-theme .project-card {
+    background-color: #2C2C2E; /* Darker card background for dark mode */
+    box-shadow: var(--box-shadow-md); /* Ensure shadows are visible in dark mode if needed */
+}
+
 
 .project-img {
     position: relative;

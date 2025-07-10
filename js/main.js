@@ -260,12 +260,12 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            // if (targetId === '#') return; // Keep this if navbar-brand href="#" is desired for top of page
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                // Rely on CSS scroll-padding-top for offset
+                targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
                 
@@ -285,10 +285,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
+            // Adjust offset to be consistent with scroll-padding-top (e.g., 90px or a bit more for accuracy)
+            const sectionTop = section.offsetTop - 95;
             const sectionId = section.getAttribute('id');
             
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                 document.querySelector('.navbar-nav .nav-link[href="#' + sectionId + '"]')?.classList.add('active');
             } else {
                 document.querySelector('.navbar-nav .nav-link[href="#' + sectionId + '"]')?.classList.remove('active');

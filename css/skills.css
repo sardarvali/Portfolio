@@ -48,14 +48,18 @@
 }
 
 .skills-card {
-    background: var(--card-bg);
-    border-radius: 15px;
+    background: #fff; /* Explicitly set for light mode, var(--card-bg) might not be defined yet in style.css */
+    border-radius: var(--border-radius-lg); /* Use CSS variable */
     padding: 2rem;
-    transition: all 0.3s ease;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--box-shadow-md); /* Use CSS variable */
 }
+.dark-theme .skills-card {
+    background: #2C2C2E; /* Darker card for dark mode */
+}
+
 
 .skills-card::before {
     content: '';
@@ -64,13 +68,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%); /* Softer overlay */
     z-index: 1;
+    display: none; /* Temporarily disable if it conflicts with new design */
 }
 
 .skills-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px); /* Slightly less translation */
+    box-shadow: var(--box-shadow-lg); /* Use CSS variable */
 }
 
 .skills-header {
@@ -111,7 +116,19 @@
 
 .skill-item {
     margin-bottom: 1.5rem;
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
+
+.skill-item:hover {
+    background-color: rgba(0, 122, 255, 0.05); /* Subtle background on hover */
+    transform: scale(1.02); /* Slight scale effect */
+}
+.dark-theme .skill-item:hover {
+    background-color: rgba(0, 122, 255, 0.1);
+}
+
 
 .skill-info {
     display: flex;

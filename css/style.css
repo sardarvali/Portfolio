@@ -1,49 +1,60 @@
-/* Main Styles for Portfolio Website - Modern Edition */
+/* Main Styles for Portfolio Website - Apple/Cloud Inspired */
 :root {
-    /* Main Colors */
-    --primary-color: #0062cc;
-    --secondary-color: #0a84ff;
-    --accent-color: #00d9ff;
-    --dark-color: #121212;
-    --light-color: #f8f9fa;
-    --text-color: #333;
-    --text-light: #f8f9fa;
+    /* Apple-inspired Color Palette with Cloud Theme */
+    --primary-color: #007AFF; /* Apple Blue */
+    --secondary-color: #5856D6; /* Apple Indigo for accents */
+    --accent-color: #8E8E93; /* Apple Gray for subtle accents/borders */
     
+    --dark-color: #1D1D1F; /* Near Black for text and dark elements */
+    --light-color: #F5F5F7; /* Off-white for backgrounds (light mode) */
+    --medium-light-gray: #E5E5EA; /* For borders or secondary backgrounds */
+    --text-color: #1D1D1F; /* Primary text color (dark) */
+    --text-light: #F5F5F7; /* Text color for dark backgrounds */
+    --text-secondary: #6E6E73; /* Secondary text color (gray) */
+
+    /* Cloud Theme Specific (can be gradients or solid) */
+    --cloud-bg-light: linear-gradient(135deg, #F5F5F7 0%, #E5E5EA 100%);
+    --cloud-bg-dark: linear-gradient(135deg, #2C2C2E 0%, #1D1D1F 100%); /* For dark mode */
+    --cloud-accent-soft-blue: #A0D2DB; /* Soft blue for cloud theme hints */
+
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #0a84ff 0%, #0062cc 100%);
-    --gradient-secondary: linear-gradient(135deg, #00d9ff 0%, #0a84ff 100%);
-    --gradient-accent: linear-gradient(135deg, #00d9ff 0%, #00f2ff 100%);
-    --gradient-dark: linear-gradient(135deg, #121212 0%, #2d2d2d 100%);
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--cloud-accent-soft-blue) 0%, var(--primary-color) 100%);
     
-    /* UI Elements */
-    --border-radius-sm: 8px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 20px;
-    --border-radius-xl: 30px;
-    --box-shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.05);
-    --box-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --box-shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.12);
-    --box-shadow-glow: 0 0 20px rgba(10, 132, 255, 0.5);
+    /* UI Elements - Refined for Apple Look */
+    --border-radius-sm: 6px;
+    --border-radius-md: 10px; /* Slightly reduced for cleaner lines */
+    --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
+
+    --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04); /* Softer shadows */
+    --box-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --box-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --box-shadow-glow: 0 0 15px rgba(0, 122, 255, 0.3); /* Subtle glow for primary elements */
     
     /* Transitions */
-    --transition-fast: all 0.2s ease;
-    --transition-normal: all 0.3s ease;
-    --transition-slow: all 0.5s ease;
+    --transition-fast: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --transition-normal: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     
     /* Spacing */
-    --spacing-xs: 5px;
-    --spacing-sm: 10px;
-    --spacing-md: 15px;
-    --spacing-lg: 30px;
-    --spacing-xl: 50px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 64px; /* Increased for more white space */
     
     /* Z-index layers */
     --z-back: -1;
     --z-normal: 1;
     --z-tooltip: 10;
-    --z-fixed: 100;
-    --z-modal: 1000;
+    --z-fixed: 1030; /* Bootstrap's default for fixed navbar is 1030 */
+    --z-modal: 1050; /* Bootstrap's default for modal */
     --z-preloader: 9999;
+
+    /* Typography - System Fonts for Apple Look */
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* Base Styles */
@@ -55,22 +66,25 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-    font-size: 16px;
+    scroll-padding-top: 90px; /* Adjusted for potentially taller navbar */
+    font-size: 16px; /* Base font size */
+    -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
 }
 
 body {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-family-sans-serif);
+    line-height: 1.65; /* Slightly increased for readability */
     color: var(--text-color);
     overflow-x: hidden;
-    background-color: #fff;
+    background-color: var(--light-color); /* Default light background */
     position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: 600; /* Slightly less bold for a cleaner look */
+    line-height: 1.3;
+    color: var(--dark-color); /* Ensure headings use the darkest text color */
 }
 
 a {
@@ -81,34 +95,36 @@ a {
 
 a:hover {
     color: var(--secondary-color);
+    /* text-decoration: underline; Optional: Apple often uses underlines on hover for links */
 }
 
 img {
     max-width: 100%;
     height: auto;
+    display: block; /* Removes bottom space under images */
 }
 
 .section-padding {
-    padding: 120px 0;
+    padding: var(--spacing-xl) 0; /* Use spacing variables */
     position: relative;
     overflow: hidden;
 }
 
 .bg-light {
-    background-color: #f9fafc;
+    background-color: var(--light-color); /* Consistent light background */
 }
 
-/* Custom Cursor */
+/* Custom Cursor - Keep if desired, can be subtle */
 .cursor {
     position: fixed;
-    width: 10px;
-    height: 10px;
+    width: 8px; /* Smaller cursor dot */
+    height: 8px;
     background-color: var(--primary-color);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: var(--z-tooltip);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    transition: width 0.15s var(--transition-fast), height 0.15s var(--transition-fast), background-color 0.15s var(--transition-fast);
     display: none;
 }
 
@@ -188,114 +204,117 @@ img {
     }
 }
 
-/* Section Title */
+/* Section Title - Cleaner Look */
 .section-title {
-    margin-bottom: 60px;
+    margin-bottom: var(--spacing-lg); /* Use spacing variables */
 }
 
 .section-title .subtitle {
     display: inline-block;
-    font-size: 16px;
+    font-size: 0.9rem; /* Slightly smaller */
     font-weight: 500;
-    color: var(--primary-color);
-    margin-bottom: 15px;
+    color: var(--text-secondary); /* More subtle subtitle color */
+    margin-bottom: var(--spacing-sm);
     position: relative;
-    padding: 5px 15px;
-    background-color: rgba(10, 132, 255, 0.1);
-    border-radius: 20px;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: rgba(0, 122, 255, 0.08); /* Softer background */
+    border-radius: var(--border-radius-md);
 }
+.dark-theme .section-title .subtitle {
+    color: var(--text-light);
+    opacity: 0.7;
+    background-color: rgba(0, 122, 255, 0.15);
+}
+
 
 .section-title h2 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 2.25rem; /* Slightly adjusted for better hierarchy */
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
     color: var(--dark-color);
 }
-
-.title-separator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+.dark-theme .section-title h2 {
+    color: var(--text-light);
 }
 
-.title-separator span {
-    display: inline-block;
-    height: 4px;
-    border-radius: 2px;
+.title-separator { /* Simplified separator */
+    display: block;
+    width: 50px; /* Shorter separator */
+    height: 3px; /* Thinner separator */
+    background-color: var(--primary-color);
+    margin: 0 auto var(--spacing-md) auto; /* Centered */
+    border-radius: 1.5px;
+}
+.dark-theme .title-separator {
     background-color: var(--primary-color);
 }
 
-.title-separator span:nth-child(1) {
-    width: 15px;
-}
 
-.title-separator span:nth-child(2) {
-    width: 30px;
-}
-
-.title-separator span:nth-child(3) {
-    width: 15px;
-}
-
-/* Buttons */
+/* Buttons - Apple-like Styling */
 .btn {
-    padding: 12px 30px;
-    border-radius: var(--border-radius-xl);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 14px;
-    transition: var(--transition-normal);
+    padding: var(--spacing-sm) var(--spacing-lg); /* Adjusted padding */
+    border-radius: var(--border-radius-md); /* Consistent border radius */
+    font-weight: 500; /* Medium weight */
+    text-transform: none; /* No uppercase */
+    font-size: 0.95rem;
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
     position: relative;
     overflow: hidden;
     z-index: var(--z-normal);
-    letter-spacing: 1px;
-    border: none;
+    letter-spacing: 0.2px; /* Subtle letter spacing */
+    border: 1px solid transparent; /* Base for outline buttons */
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    z-index: -1;
-    transform: translateX(-100%) rotate(45deg);
-    transition: var(--transition-normal);
-}
-
-.btn:hover::before {
-    transform: translateX(100%) rotate(45deg);
+.btn::before { /* Remove the shine effect for now, can be added back if desired */
+    display: none;
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
+    background-color: var(--primary-color);
     color: #fff;
-    box-shadow: var(--box-shadow-sm);
+    box-shadow: none; /* Remove default shadow, rely on hover/active */
 }
 
 .btn-primary:hover {
-    background: var(--gradient-secondary);
-    box-shadow: var(--box-shadow-md);
-    transform: translateY(-3px);
+    background-color: #0066CC; /* Darken primary color on hover */
+    color: #fff;
+    box-shadow: var(--box-shadow-sm); /* Subtle shadow on hover */
+    transform: translateY(-1px); /* Slight lift */
 }
+.btn-primary:active {
+    background-color: #0052A3; /* Even darker on active */
+    transform: translateY(0px);
+    box-shadow: none;
+}
+
 
 .btn-outline {
     background: transparent;
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 1.5px solid var(--primary-color); /* Thicker border for outline */
 }
 
 .btn-outline:hover {
-    background: var(--primary-color);
-    color: #fff;
-    transform: translateY(-3px);
-    box-shadow: var(--box-shadow-sm);
+    background: rgba(0, 122, 255, 0.08); /* Very subtle background */
+    color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+.btn-outline:active {
+    background: rgba(0, 122, 255, 0.15);
+    transform: translateY(0px);
+}
+.dark-theme .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.dark-theme .btn-outline:hover {
+    background: rgba(0, 122, 255, 0.2);
+    color: var(--primary-color);
 }
 
-.btn-glow {
+
+.btn-glow { /* Re-evaluate glow effect, make it more subtle if kept */
     position: relative;
 }
 
@@ -306,17 +325,18 @@ img {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: var(--gradient-primary);
-    border-radius: var(--border-radius-xl);
+    background: var(--primary-color);
+    border-radius: var(--border-radius-md); /* Match button's radius */
     z-index: -2;
     opacity: 0;
     transition: var(--transition-normal);
+    filter: blur(8px); /* Softer blur */
 }
 
 .btn-glow:hover::after {
-    opacity: 0.4;
-    filter: blur(10px);
+    opacity: 0.25; /* Reduced opacity */
 }
+
 
 /* Text Effects */
 .gradient-text {
@@ -327,69 +347,99 @@ img {
     color: transparent; /* Fallback for browsers that don't support -webkit-text-fill-color */
 }
 
-/* Navbar */
+/* Navbar - Apple Inspired */
 .navbar {
-    padding: 15px 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all var(--transition-normal);
-    z-index: 1000;
+    padding: var(--spacing-md) 0; /* Use spacing variables */
+    background-color: rgba(255, 255, 255, 0.7); /* More translucent */
+    backdrop-filter: blur(20px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(20px);
+    transition: background-color var(--transition-normal), box-shadow var(--transition-normal), padding var(--transition-normal);
+    z-index: var(--z-fixed);
+    border-bottom: 1px solid transparent; /* For scrolled state */
 }
 
 .dark-theme .navbar {
-    background-color: rgba(18, 18, 18, 0.8);
+    background-color: rgba(29, 29, 31, 0.7); /* Dark translucent */
+    border-bottom: 1px solid transparent;
 }
 
 .navbar-scrolled {
-    padding: 10px 0;
-    box-shadow: var(--box-shadow-md);
+    padding: var(--spacing-sm) 0; /* Slightly reduced padding on scroll */
+    background-color: rgba(250, 250, 250, 0.85); /* Less translucent on scroll */
+    box-shadow: 0 0.5px 0 rgba(0,0,0,0.12); /* Subtle bottom border like Apple */
+}
+
+.dark-theme .navbar-scrolled {
+    background-color: rgba(20, 20, 22, 0.85);
+    box-shadow: 0 0.5px 0 rgba(255,255,255,0.12);
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-size: 24px;
-    color: var(--primary-color) !important;
+    font-weight: 600; /* Adjusted font weight */
+    font-size: 1.25rem; /* Slightly smaller */
+    color: var(--dark-color) !important;
+    transition: color var(--transition-fast), opacity var(--transition-fast);
 }
+.dark-theme .navbar-brand {
+    color: var(--text-light) !important;
+}
+.navbar-brand:hover {
+    color: var(--primary-color) !important;
+    opacity: 0.8;
+}
+.dark-theme .navbar-brand:hover {
+    color: var(--primary-color) !important;
+    opacity: 0.8;
+}
+
 
 .navbar-nav .nav-item {
     position: relative;
-    margin-left: 10px;
+    margin-left: var(--spacing-sm);
 }
 
 .navbar-nav .nav-link {
-    color: var(--text-color) !important;
+    color: var(--text-secondary) !important; /* Use secondary text color */
     font-weight: 500;
-    padding: 8px 15px;
+    font-size: 0.9rem; /* Slightly smaller nav links */
+    padding: var(--spacing-xs) var(--spacing-md);
     position: relative;
-    transition: var(--transition-normal);
+    transition: color var(--transition-fast);
+    border-radius: var(--border-radius-sm);
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: var(--primary-color) !important;
+    background-color: rgba(0, 122, 255, 0.1); /* Subtle background on hover/active */
+}
+.dark-theme .navbar-nav .nav-link {
+    color: var(--text-light) !important;
+    opacity: 0.8;
+}
+.dark-theme .navbar-nav .nav-link:hover,
+.dark-theme .navbar-nav .nav-link.active {
+    color: var(--primary-color) !important;
+    opacity: 1;
+    background-color: rgba(0, 122, 255, 0.2);
 }
 
-.navbar-nav .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: var(--transition-normal);
-    transform: translateX(-50%);
+
+.navbar-nav .nav-link::after { /* Remove the underline style */
+    display: none;
 }
 
-.navbar-nav .nav-link:hover::after,
-.navbar-nav .nav-link.active::after {
-    width: 30px;
+.navbar-toggler {
+    border: none;
+    padding: 0;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
 .toggler-icon {
-    width: 30px;
-    height: 20px;
+    width: 24px; /* Slightly smaller toggler */
+    height: 18px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -399,13 +449,17 @@ img {
 .toggler-icon span {
     display: block;
     width: 100%;
-    height: 2px;
+    height: 2px; /* Thinner lines */
     background-color: var(--dark-color);
-    transition: var(--transition-normal);
+    border-radius: 1px;
+    transition: transform var(--transition-normal), opacity var(--transition-fast);
+}
+.dark-theme .toggler-icon span {
+    background-color: var(--text-light);
 }
 
 .navbar-toggler[aria-expanded="true"] .toggler-icon span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg); /* Adjusted for thinner lines */
 }
 
 .navbar-toggler[aria-expanded="true"] .toggler-icon span:nth-child(2) {
