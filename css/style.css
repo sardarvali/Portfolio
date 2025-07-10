@@ -103,10 +103,10 @@ body {
     line-height: 1.65;
     color: var(--text-color);
     overflow-x: hidden;
-    background-color: var(--bg-light-primary); /* Updated to new variable name */
+    background-color: var(--bg-light-primary);
     position: relative;
 }
-.dark-theme body {
+body.dark-mode { /* Corrected selector */
     background-color: var(--bg-dark-primary);
     color: var(--text-light-primary);
 }
@@ -114,27 +114,32 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     line-height: 1.3;
-    color: var(--text-dark-primary); /* Updated to new variable name */
+    color: var(--text-dark-primary);
 }
-.dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6 {
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 { /* Corrected selector */
     color: var(--text-light-primary);
 }
 
 
 a {
     text-decoration: none;
-    color: var(--interactive-blue); /* Use specific interactive blue */
+    color: var(--interactive-blue);
     transition: color var(--transition-fast);
 }
 
 a:hover {
-    color: var(--interactive-blue-hover); /* Use specific hover blue */
+    color: var(--interactive-blue-hover);
 }
-.dark-theme a {
-    color: var(--interactive-blue); /* Links might need to stay vibrant in dark mode */
+body.dark-mode a { /* Corrected selector */
+    color: var(--interactive-blue);
 }
-.dark-theme a:hover {
-    color: var(--sky-blue-deep); /* A lighter, vibrant blue for dark mode hover */
+body.dark-mode a:hover { /* Corrected selector */
+    color: var(--sky-blue-deep);
 }
 
 
@@ -151,9 +156,9 @@ img {
 }
 
 .bg-light {
-    background-color: var(--bg-light-secondary); /* Use the lighter sky blue for .bg-light sections */
+    background-color: var(--bg-light-secondary);
 }
-.dark-theme .bg-light { /* .bg-light in dark-mode context */
+body.dark-mode .bg-light { /* Corrected selector */
     background-color: var(--bg-dark-secondary);
 }
 
@@ -261,10 +266,10 @@ img {
     margin-bottom: var(--spacing-sm);
     position: relative;
     padding: var(--spacing-xs) var(--spacing-md);
-    background-color: rgba(0, 122, 255, 0.08); /* Softer background */
+    background-color: rgba(0, 122, 255, 0.08);
     border-radius: var(--border-radius-md);
 }
-.dark-theme .section-title .subtitle {
+body.dark-mode .section-title .subtitle { /* Corrected selector */
     color: var(--text-light);
     opacity: 0.7;
     background-color: rgba(0, 122, 255, 0.15);
@@ -272,25 +277,25 @@ img {
 
 
 .section-title h2 {
-    font-size: 2.25rem; /* Slightly adjusted for better hierarchy */
+    font-size: 2.25rem;
     font-weight: 600;
     margin-bottom: var(--spacing-md);
     color: var(--dark-color);
 }
-.dark-theme .section-title h2 {
+body.dark-mode .section-title h2 { /* Corrected selector */
     color: var(--text-light);
 }
 
-.title-separator { /* Simplified separator */
+.title-separator {
     display: block;
-    width: 50px; /* Shorter separator */
-    height: 3px; /* Thinner separator */
+    width: 50px;
+    height: 3px;
     background-color: var(--primary-color);
-    margin: 0 auto var(--spacing-md) auto; /* Centered */
+    margin: 0 auto var(--spacing-md) auto;
     border-radius: 1.5px;
 }
-.dark-theme .title-separator {
-    background-color: var(--primary-color);
+body.dark-mode .title-separator { /* Corrected selector */
+    background-color: var(--primary-color); /* This might be fine, or use a lighter accent for dark mode */
 }
 
 
@@ -348,11 +353,11 @@ img {
     background: rgba(0, 122, 255, 0.15);
     transform: translateY(0px);
 }
-.dark-theme .btn-outline {
+body.dark-mode .btn-outline { /* Corrected selector */
     color: var(--primary-color);
     border-color: var(--primary-color);
 }
-.dark-theme .btn-outline:hover {
+body.dark-mode .btn-outline:hover { /* Corrected selector */
     background: rgba(0, 122, 255, 0.2);
     color: var(--primary-color);
 }
@@ -652,20 +657,20 @@ body.dark-mode .theme-toggle .fa-moon { display: none; }
     color: var(--text-dark-secondary); /* Use theme text color */
     font-size: 1rem; /* Adjusted size */
     transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
-    border: none; /* Remove previous border */
+    border: none;
 }
-.dark-theme .social-icon {
-    background-color: var(--bg-dark-secondary); /* Dark theme background */
+body.dark-mode .social-icon { /* Corrected selector */
+    background-color: var(--bg-dark-secondary);
     color: var(--text-light-secondary);
 }
 
 .social-icon:hover {
     background-color: var(--interactive-blue);
     color: var(--cloud-white);
-    transform: translateY(-3px) scale(1.05); /* Subtle lift and scale */
+    transform: translateY(-3px) scale(1.05);
 }
-.dark-theme .social-icon:hover {
-    background-color: var(--interactive-blue);
+body.dark-mode .social-icon:hover { /* Corrected selector */
+    background-color: var(--interactive-blue); /* Keeping hover consistent for dark mode */
     color: var(--cloud-white);
 }
 
@@ -1827,40 +1832,41 @@ body.dark-mode #skills {
     border-radius: var(--border-radius-lg); /* Consistent rounding */
     overflow: hidden;
     border: none; /* Remove default border */
-    background-color: var(--bg-light-primary); /* Use theme background */
-    box-shadow: var(--box-shadow-lg); /* Theme shadow */
+    background-color: var(--bg-light-primary);
+    box-shadow: var(--box-shadow-lg);
 }
-.dark-theme .modal-content {
+body.dark-mode .modal-content { /* Corrected selector */
     background-color: var(--bg-dark-secondary);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.4); /* More pronounced shadow for dark modals */
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
 }
 
 .modal-header {
-    background-color: transparent; /* Cleaner header */
+    background-color: transparent;
     color: var(--text-dark-primary);
-    border-bottom: 1px solid var(--cloud-gray-light); /* Subtle separator */
+    border-bottom: 1px solid var(--cloud-gray-light);
     padding: var(--spacing-md) var(--spacing-lg);
 }
-.dark-theme .modal-header {
+body.dark-mode .modal-header { /* Corrected selector */
     color: var(--text-light-primary);
     border-bottom: 1px solid rgba(var(--text-light-rgb), 0.15);
 }
 
 .modal-title {
-    font-weight: 600; /* Apple-like title weight */
+    font-weight: 600;
     font-size: 1.25rem;
 }
 
 .modal-body {
-    padding: var(--spacing-lg); /* Consistent spacing */
+    padding: var(--spacing-lg);
 }
 
-.modal-body h4, .modal-body h5 { /* General headings within modal body */
+.modal-body h4, .modal-body h5 {
     color: var(--text-dark-primary);
     margin-bottom: var(--spacing-sm);
     font-weight: 500;
 }
-.dark-theme .modal-body h4, .dark-theme .modal-body h5 {
+body.dark-mode .modal-body h4,
+body.dark-mode .modal-body h5 { /* Corrected selector */
     color: var(--text-light-primary);
 }
 
@@ -1874,31 +1880,31 @@ body.dark-mode #skills {
     margin-bottom: var(--spacing-sm);
     color: var(--text-dark-secondary);
 }
-.dark-theme .modal-body ul li {
+body.dark-mode .modal-body ul li { /* Corrected selector */
     color: var(--text-light-secondary);
 }
 
 /* .tech-tags styling might be in modern-projects.css, review there */
 
 .modal-footer {
-    border-top: 1px solid var(--cloud-gray-light); /* Subtle separator */
+    border-top: 1px solid var(--cloud-gray-light);
     padding: var(--spacing-md) var(--spacing-lg);
     background-color: transparent;
 }
-.dark-theme .modal-footer {
+body.dark-mode .modal-footer { /* Corrected selector */
     border-top: 1px solid rgba(var(--text-light-rgb), 0.15);
 }
 
-.btn-close { /* Ensure close button is visible in both themes */
+.btn-close {
     filter: grayscale(1) opacity(0.7);
 }
-.dark-theme .btn-close {
+body.dark-mode .btn-close { /* Corrected selector */
     filter: brightness(0) invert(1) opacity(0.7);
 }
 .btn-close:hover {
     filter: grayscale(0) opacity(1);
 }
-.dark-theme .btn-close:hover {
+body.dark-mode .btn-close:hover { /* Corrected selector */
     filter: brightness(0) invert(1) opacity(1);
 }
 

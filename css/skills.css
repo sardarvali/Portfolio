@@ -60,71 +60,81 @@ body.dark-mode .skills-filter .filter-btn.active {
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg); /* Use theme spacing */
+    gap: var(--spacing-lg);
 }
 
-.skills-card {
+.skills-card { /* Will now act more as a content block within the grid item */
     background: var(--cloud-white);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-lg);
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    /* Remove transition and box-shadow for a flatter, integrated look */
+    /* transition: transform var(--transition-normal), box-shadow var(--transition-normal); */
     position: relative;
     overflow: hidden;
-    box-shadow: var(--box-shadow-md);
+    border: 1px solid var(--cloud-gray-light); /* Subtle border instead of shadow */
 }
 body.dark-mode .skills-card {
     background: var(--bg-dark-secondary);
-    border: 1px solid rgba(var(--text-light-rgb, 245,245,247),0.1);
-    box-shadow: none;
+    border: 1px solid rgba(var(--text-light-rgb, 245,245,247),0.15); /* Slightly more visible border in dark */
 }
 
-.skills-card:hover {
+/* Remove hover effects that lift the whole card, focus on internal item hovers */
+/* .skills-card:hover {
     transform: translateY(-8px) translateZ(0);
     box-shadow: var(--box-shadow-lg);
 }
 body.dark-mode .skills-card:hover {
     box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-}
+} */
 
-.skills-card:hover .skills-icon {
+/* Icon animation can still occur if desired, but tied to .skills-header hover or similar */
+ .skills-card:hover .skills-icon { /* Or tie to .skills-header:hover */
     transform: scale(1.1) rotate(-5deg);
 }
-
-/* Removed .skills-card::before as it was display:none */
 
 .skills-header {
     display: flex;
     align-items: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md); /* Reduced margin for tighter header */
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--cloud-gray-light);
     position: relative;
     z-index: 2;
 }
+body.dark-mode .skills-header {
+    border-bottom: 1px solid rgba(var(--text-light-rgb, 245,245,247),0.1);
+}
 
 .skills-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--interactive-blue);
-    border-radius: var(--border-radius-md);
+    width: 40px; /* Smaller icon container */
+    height: 40px;
+    background: transparent; /* Icon color will provide the visual */
+    color: var(--interactive-blue); /* Icon color itself */
+    border-radius: var(--border-radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: var(--spacing-md);
-    box-shadow: var(--box-shadow-sm);
+    margin-right: var(--spacing-sm);
+    box-shadow: none; /* Remove shadow from icon container */
     transition: transform var(--transition-normal);
 }
+body.dark-mode .skills-icon {
+    color: var(--sky-blue-deep);
+}
+
 
 .skills-icon i {
-    font-size: 1.5rem;
-    color: var(--cloud-white);
+    font-size: 1.8rem; /* Icon size itself can be larger */
+    /* color is inherited from .skills-icon */
 }
 
 .skills-header h3 {
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.15rem; /* Slightly smaller category title */
+    font-weight: 600; /* Bolder for category title */
     margin: 0;
     color: var(--text-dark-primary);
 }
-body.dark-mode .skills-header h3 { /* Standardized dark mode selector */
+body.dark-mode .skills-header h3 {
     color: var(--text-light-primary);
 }
 
@@ -183,14 +193,19 @@ body.dark-mode .skill-info span { /* Standardized dark mode selector */
 }
 
 .skill-progress {
-    height: 8px; /* Keep it slim */
-    background: var(--cloud-gray-light); /* Lighter base for progress bar */
-    border-radius: var(--border-radius-sm); /* Consistent rounding */
+    height: 8px;
+    background: var(--cloud-gray-light);
+    border-radius: var(--border-radius-sm);
     overflow: hidden;
     position: relative;
 }
+body.dark-mode .skill-progress {
+    background: rgba(var(--text-light-rgb), 0.1); /* Darker base for progress bar in dark mode */
+}
 
-.skill-progress::after {
+/* This ::after was for the old JS animation. The new JS targets .skill-progress-bar directly. */
+/* Removing this rule if .skill-progress-bar is now the one being styled for width/background */
+/* .skill-progress::after {
     content: '';
     position: absolute;
     top: 0;
@@ -199,7 +214,15 @@ body.dark-mode .skill-info span { /* Standardized dark mode selector */
     background: var(--primary-color);
     border-radius: 4px;
     transition: width 1s ease;
+} */
+
+/* Ensure .skill-progress-bar (from style.css global or here) is styled */
+.skill-progress-bar { /* Already in style.css - this is just a reminder/check */
+    background: var(--gradient-interactive); /* Use a nice gradient for the bar */
+    border-radius: var(--border-radius-sm);
+    /* height and width are set by JS or inline */
 }
+
 
 /* Animation for skill progress bars */
 @keyframes progressBar {
