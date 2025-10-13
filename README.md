@@ -14,18 +14,6 @@ Link: https://syed-sardar-vali.web.app/
 - Contact form with validation
 - Skills visualization with progress bars
 
-## Image Requirements
-
-For the website to display correctly, please add the following images to the `img` directory:
-
-1. `pet-adoption.jpg` - Screenshot of Pet Adoption System project
-2. `gail-app.jpg` - Screenshot of Gail Demo App
-3. `chat-app.jpg` - Screenshot of ChatApp project
-4. `restaurant.jpg` - Screenshot of Restaurant Management System
-5. `calculator.jpg` - Screenshot of Calculator App
-6. `entertainment.jpg` - Screenshot of Entertainment Hub
-7. `profile.jpg` (optional) - Your profile picture for the About section
-
 ## Technologies Used
 
 - HTML5
@@ -58,6 +46,3 @@ This website is compatible with all modern browsers including:
 - Microsoft Edge
 - Opera
 
-## License
-
-This project is available for personal use.
