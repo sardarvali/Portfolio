@@ -1,31 +1,39 @@
-/* Contact Section Enhanced Styles */
+/* Contact Section Enhanced Styles - Phase 2 Update */
 
 /* Contact Info Card */
 .contact-info-card {
-    background: var(--card-bg);
-    border-radius: 15px;
+    background: var(--cloud-white-soft); /* Use theme variable */
+    border-radius: var(--border-radius-lg); /* Use theme variable */
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow-md); /* Use theme variable */
     height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    /* border: 1px solid var(--cloud-gray-light); */ /* Optional subtle border */
+    /* backdrop-filter: blur(10px); Removed for cleaner look */
+}
+body.dark-mode .contact-info-card { /* Changed .dark-theme to body.dark-mode */
+    background: var(--bg-dark-secondary);
+    /* border: 1px solid rgba(var(--text-light-rgb), 0.1); */
 }
 
 .contact-header {
     position: relative;
-    padding: 40px 30px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
+    padding: var(--spacing-lg) var(--spacing-md); /* Use theme spacing */
+    background: var(--gradient-sky-accent); /* Softer gradient */
+    color: var(--text-dark-primary); /* Ensure contrast on lighter gradient */
+}
+body.dark-mode .contact-header { /* Changed .dark-theme to body.dark-mode */
+    background: linear-gradient(135deg, var(--bg-dark-secondary) 0%, var(--bg-dark-primary) 100%);
+    color: var(--text-light-primary);
 }
 
-.contact-header-overlay {
+.contact-header-overlay { /* Keep if pattern is desired, otherwise remove */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/pattern.png');
-    opacity: 0.1;
+    background-image: url('../img/pattern.png'); /* Ensure this path is correct */
+    opacity: 0.05; /* More subtle */
 }
 
 .contact-header-content {
@@ -34,178 +42,206 @@
 }
 
 .contact-header h3 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Adjusted size */
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
 }
 
 .contact-header p {
-    font-size: 15px;
-    opacity: 0.9;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 .contact-body {
-    padding: 30px;
+    padding: var(--spacing-lg) var(--spacing-md);
 }
 
 .contact-item {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 25px;
+    margin-bottom: var(--spacing-lg);
 }
 
 .contact-item .icon {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(var(--primary-rgb), 0.1);
-    color: var(--primary-color);
-    border-radius: 50%;
-    margin-right: 15px;
-    font-size: 18px;
-    transition: all 0.3s ease;
-}
-
-.contact-item:hover .icon {
-    background: var(--primary-color);
-    color: #fff;
-    transform: scale(1.1);
-}
-
-.contact-item .text h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: var(--text-color);
-}
-
-.contact-item .text p,
-.contact-item .text a {
-    font-size: 15px;
-    color: var(--text-secondary);
-    margin: 0;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-item .text a:hover {
-    color: var(--primary-color);
-}
-
-.contact-social {
-    margin-top: 30px;
-}
-
-.contact-social h4 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--text-color);
-}
-
-.social-icons {
-    display: flex;
-    gap: 12px;
-}
-
-.social-icon {
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--card-bg);
-    color: var(--text-color);
-    border-radius: 50%;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(var(--primary-rgb), 0.2);
+    background: rgba(var(--interactive-blue-rgb), 0.1);
+    color: var(--interactive-blue);
+    border-radius: var(--border-radius-md);
+    margin-right: var(--spacing-md);
+    font-size: 1.1rem;
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+.dark-theme .contact-item .icon {
+    background: rgba(var(--interactive-blue-rgb), 0.2);
+    color: var(--sky-blue-deep);
 }
 
-.social-icon:hover {
-    background: var(--primary-color);
-    color: #fff;
-    transform: translateY(-5px);
+.contact-item:hover .icon {
+    background: var(--interactive-blue);
+    color: var(--cloud-white);
+    transform: scale(1.1);
 }
+
+.contact-item .text h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-dark-primary);
+}
+.dark-theme .contact-item .text h4 {
+    color: var(--text-light-primary);
+}
+
+.contact-item .text p,
+.contact-item .text a {
+    font-size: 0.9rem;
+    color: var(--text-dark-secondary);
+    margin: 0;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+.dark-theme .contact-item .text p,
+.dark-theme .contact-item .text a {
+    color: var(--text-light-secondary);
+}
+
+.contact-item .text a:hover {
+    color: var(--interactive-blue-hover);
+}
+.dark-theme .contact-item .text a:hover {
+    color: var(--sky-blue-light);
+}
+
+.contact-social {
+    margin-top: var(--spacing-lg);
+}
+
+.contact-social h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-dark-primary);
+}
+.dark-theme .contact-social h4 {
+    color: var(--text-light-primary);
+}
+
+.social-icons {
+    display: flex;
+    gap: var(--spacing-md); /* Increased gap slightly for better visual separation */
+}
+
+/* .social-icon rules are in style.css and updated there */
+
 
 /* Contact Form Card */
 .contact-form-card {
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 35px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: var(--cloud-white-soft); /* Use theme variable */
+    border-radius: var(--border-radius-lg); /* Use theme variable */
+    padding: var(--spacing-lg);  /* Use theme spacing */
+    box-shadow: var(--box-shadow-md); /* Use theme variable */
     height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    /* border: 1px solid var(--cloud-gray-light); */ /* Optional */
+    /* backdrop-filter: blur(10px); Removed */
+}
+.dark-theme .contact-form-card {
+    background: var(--bg-dark-secondary);
+    /* border: 1px solid rgba(var(--text-light-rgb), 0.1); */
 }
 
+
 .contact-form-card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 25px;
-    color: var(--text-color);
+    font-size: 1.5rem; /* Adjusted size */
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg); /* More space */
+    color: var(--text-dark-primary);
+}
+.dark-theme .contact-form-card h3 {
+    color: var(--text-light-primary);
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-sm);
     font-weight: 500;
-    color: var(--text-color);
+    font-size: 0.9rem;
+    color: var(--text-dark-secondary);
+}
+.dark-theme .form-group label {
+    color: var(--text-light-secondary);
 }
 
-.input-group {
+.input-group { /* Keep if using Bootstrap's input group structure */
     position: relative;
     display: flex;
 }
 
-.input-group-text {
-    background: rgba(var(--primary-rgb), 0.1);
-    color: var(--primary-color);
-    border: 1px solid rgba(var(--primary-rgb), 0.2);
+.input-group-text { /* Style for input group add-ons */
+    background: var(--cloud-gray-light);
+    color: var(--text-dark-secondary);
+    border: 1px solid var(--cloud-gray-medium);
     border-right: none;
+    padding: 0.65rem 0.9rem; /* Match form-control padding */
+    border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+}
+.dark-theme .input-group-text {
+    background: var(--bg-dark-primary);
+    color: var(--text-light-secondary);
+    border-color: rgba(var(--text-light-rgb),0.2);
 }
 
 .form-control {
-    background: var(--input-bg);
-    border: 1px solid rgba(var(--primary-rgb), 0.2);
-    color: var(--text-color);
-    padding: 12px 15px;
-    border-radius: 0 5px 5px 0;
-    transition: all 0.3s ease;
+    background: var(--cloud-white);
+    border: 1px solid var(--cloud-gray-medium);
+    color: var(--text-dark-primary);
+    padding: 0.65rem 0.9rem; /* Consistent padding */
+    border-radius: var(--border-radius-md); /* Consistent rounding */
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    font-size: 0.95rem;
+}
+.input-group .form-control { /* If part of input-group, adjust rounding */
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+}
+
+.dark-theme .form-control {
+    background: var(--bg-dark-primary);
+    border-color: rgba(var(--text-light-rgb),0.2);
+    color: var(--text-light-primary);
 }
 
 .form-control:focus {
-    box-shadow: none;
-    border-color: var(--primary-color);
-    background: var(--input-bg-focus);
+    box-shadow: 0 0 0 0.2rem rgba(var(--interactive-blue-rgb), 0.25); /* Apple-like focus ring */
+    border-color: var(--interactive-blue);
+    background: var(--cloud-white); /* Ensure background doesn't change too drastically */
+}
+.dark-theme .form-control:focus {
+    background: var(--bg-dark-primary);
+    border-color: var(--interactive-blue);
+    box-shadow: 0 0 0 0.2rem rgba(var(--interactive-blue-rgb), 0.35);
 }
 
 .form-control::placeholder {
-    color: var(--text-muted);
+    color: var(--cloud-gray-medium);
+}
+.dark-theme .form-control::placeholder {
+    color: var(--text-dark-secondary); /* Darker placeholder for dark inputs */
 }
 
 .form-submit {
-    margin-top: 30px;
+    margin-top: var(--spacing-lg);
 }
 
-.form-submit .btn {
-    padding: 12px 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
+/* .form-submit .btn styles will come from global .btn styles */
 
-.form-submit .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
-}
-
-/* Form validation styles */
+/* Form validation styles (Bootstrap's default are usually fine, can tweak if needed) */
 .form-control.is-invalid {
     border-color: #dc3545;
     background-image: none;
@@ -249,15 +285,15 @@
 @media (max-width: 768px) {
     .contact-form-card,
     .contact-info-card {
-        padding: 25px;
+        padding: var(--spacing-lg); /* Use theme variable */
     }
     
     .contact-header {
-        padding: 30px 25px;
+        padding: var(--spacing-lg) var(--spacing-md); /* Use theme variables */
     }
     
     .contact-item {
-        margin-bottom: 20px;
+        margin-bottom: var(--spacing-md); /* Use theme variable */
     }
     
     .contact-item .icon {

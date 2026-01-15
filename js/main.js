@@ -68,9 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize AOS animations
     AOS.init({
-        duration: 1000,
+        duration: 800, // Slightly shorter default duration
+        easing: 'ease-out-cubic', // Smoother easing
         once: true,
-        mirror: false
+        mirror: false,
+        // offset: 80, // Consider adjusting offset if elements appear too late/early
+        // anchorPlacement: 'top-bottom',
     });
 
     // Navbar scroll effect
@@ -212,19 +215,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check for saved theme preference
         if (localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-mode');
-            themeToggle.querySelector('.theme-toggle-ball').style.left = '35px';
+            // CSS will handle ball position and icon visibility based on body.dark-mode
         }
         
         themeToggle.addEventListener('click', function() {
             body.classList.toggle('dark-mode');
             
             if (body.classList.contains('dark-mode')) {
-                themeToggle.querySelector('.theme-toggle-ball').style.left = '35px';
                 localStorage.setItem('theme', 'dark');
             } else {
-                themeToggle.querySelector('.theme-toggle-ball').style.left = '5px';
                 localStorage.setItem('theme', 'light');
             }
+            // CSS will handle ball position and icon visibility based on body.dark-mode
         });
     }
 
@@ -260,12 +262,12 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            // if (targetId === '#') return; // Keep this if navbar-brand href="#" is desired for top of page
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                // Rely on CSS scroll-padding-top for offset
+                targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
                 
@@ -285,10 +287,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         sections.forEach(section => {
             const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
+            // Adjust offset to be consistent with scroll-padding-top (e.g., 90px or a bit more for accuracy)
+            const sectionTop = section.offsetTop - 95;
             const sectionId = section.getAttribute('id');
             
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                 document.querySelector('.navbar-nav .nav-link[href="#' + sectionId + '"]')?.classList.add('active');
             } else {
                 document.querySelector('.navbar-nav .nav-link[href="#' + sectionId + '"]')?.classList.remove('active');

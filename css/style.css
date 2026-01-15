@@ -1,49 +1,86 @@
-/* Main Styles for Portfolio Website - Modern Edition */
+/* Main Styles for Portfolio Website - Apple/Cloud Inspired - Phase 2 */
 :root {
-    /* Main Colors */
-    --primary-color: #0062cc;
-    --secondary-color: #0a84ff;
-    --accent-color: #00d9ff;
-    --dark-color: #121212;
-    --light-color: #f8f9fa;
-    --text-color: #333;
-    --text-light: #f8f9fa;
+    /* Cloud & Sky Inspired Palette (Apple-like execution) */
+    --sky-blue-light: #E0F2FE; /* Very light, airy blue */
+    --sky-blue-medium: #B9E2FB; /* Soft, clear sky blue */
+    --sky-blue-medium-rgb: 185,226,251; /* RGB for sky-blue-medium */
+    --sky-blue-deep: #72C2F3;   /* Deeper, vibrant sky blue - Primary Accent */
+    --sky-blue-deep-rgb: 114,194,251; /* RGB for sky-blue-deep */
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #0a84ff 0%, #0062cc 100%);
-    --gradient-secondary: linear-gradient(135deg, #00d9ff 0%, #0a84ff 100%);
-    --gradient-accent: linear-gradient(135deg, #00d9ff 0%, #00f2ff 100%);
-    --gradient-dark: linear-gradient(135deg, #121212 0%, #2d2d2d 100%);
+    --cloud-white: #FFFFFF;
+    --cloud-white-soft: #F7F9FA; /* Slightly off-white, like soft clouds */
+    --cloud-gray-light: #E8EDF0; /* Light gray for subtle borders, UI elements */
+    --cloud-gray-medium: #D1D9DF; /* Medium gray for secondary text or elements */
+
+    --text-dark-primary: #222B33;   /* Dark, slightly desaturated blue-gray for primary text */
+    --text-dark-primary-rgb: 34,43,51; /* RGB for text-dark-primary */
+    --text-dark-secondary: #5A6A78; /* Lighter shade for secondary text */
+    --text-light-primary: #F7F9FA;  /* Primary text on dark backgrounds */
+    --text-light-rgb: 247,249,250; /* RGB for text-light-primary */
+    --text-light-secondary: #BCC8D1;/* Secondary text on dark backgrounds */
+
+    /* Core Interactive Colors (Apple-inspired) */
+    --interactive-blue: #007AFF;     /* Classic Apple blue for links, primary buttons */
+    --interactive-blue-rgb: 0,122,255; /* RGB version for rgba() */
+    --interactive-blue-hover: #0056b3;/* Darker shade for hover */
     
-    /* UI Elements */
-    --border-radius-sm: 8px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 20px;
-    --border-radius-xl: 30px;
-    --box-shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.05);
-    --box-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
-    --box-shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.12);
-    --box-shadow-glow: 0 0 20px rgba(10, 132, 255, 0.5);
+    /* Backgrounds */
+    --bg-light-primary: var(--cloud-white-soft);
+    --bg-light-secondary: var(--sky-blue-light);
+    --bg-dark-primary: #1C2329; /* Deep cool gray for dark mode */
+    --bg-dark-secondary: #2C3A45; /* Slightly lighter dark bg */
+
+    /* Gradients for Cloud/Sky effects */
+    --gradient-sky-light: linear-gradient(180deg, var(--sky-blue-light) 0%, var(--cloud-white-soft) 100%);
+    --gradient-sky-accent: linear-gradient(135deg, var(--sky-blue-medium) 0%, var(--sky-blue-deep) 100%);
+    --gradient-interactive: linear-gradient(135deg, var(--interactive-blue) 0%, var(--sky-blue-deep) 100%);
+
+    /* Redefined variables from previous phase to align with new palette */
+    --primary-color: var(--interactive-blue);
+    --secondary-color: var(--sky-blue-deep);
+    --accent-color: var(--sky-blue-medium);
+
+    --dark-color: var(--text-dark-primary);
+    --light-color: var(--bg-light-primary);
+    --text-color: var(--text-dark-primary);
+    --text-light: var(--text-light-primary);
+
+    --gradient-primary: var(--gradient-interactive);
+
+    /* UI Elements - Refined for Apple Look */
+    --border-radius-sm: 6px;
+    --border-radius-md: 10px; /* Slightly reduced for cleaner lines */
+    --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
+
+    --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04); /* Softer shadows */
+    --box-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --box-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --box-shadow-glow: 0 0 15px rgba(0, 122, 255, 0.3); /* Subtle glow for primary elements */
     
     /* Transitions */
-    --transition-fast: all 0.2s ease;
-    --transition-normal: all 0.3s ease;
-    --transition-slow: all 0.5s ease;
+    --transition-fast: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --transition-normal: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     
     /* Spacing */
-    --spacing-xs: 5px;
-    --spacing-sm: 10px;
-    --spacing-md: 15px;
-    --spacing-lg: 30px;
-    --spacing-xl: 50px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 32px;
+    --spacing-xl: 64px; /* Increased for more white space */
     
     /* Z-index layers */
     --z-back: -1;
     --z-normal: 1;
     --z-tooltip: 10;
-    --z-fixed: 100;
-    --z-modal: 1000;
+    --z-fixed: 1030; /* Bootstrap's default for fixed navbar is 1030 */
+    --z-modal: 1050; /* Bootstrap's default for modal */
     --z-preloader: 9999;
+
+    /* Typography - System Fonts for Apple Look */
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /* Base Styles */
@@ -55,60 +92,88 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-    font-size: 16px;
+    scroll-padding-top: 90px; /* Adjusted for potentially taller navbar */
+    font-size: 16px; /* Base font size */
+    -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
 }
 
 body {
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-family-sans-serif);
+    line-height: 1.65;
     color: var(--text-color);
     overflow-x: hidden;
-    background-color: #fff;
+    background-color: var(--bg-light-primary);
     position: relative;
+}
+body.dark-mode { /* Corrected selector */
+    background-color: var(--bg-dark-primary);
+    color: var(--text-light-primary);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-dark-primary);
 }
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 { /* Corrected selector */
+    color: var(--text-light-primary);
+}
+
 
 a {
     text-decoration: none;
-    color: var(--primary-color);
-    transition: var(--transition-normal);
+    color: var(--interactive-blue);
+    transition: color var(--transition-fast);
 }
 
 a:hover {
-    color: var(--secondary-color);
+    color: var(--interactive-blue-hover);
 }
+body.dark-mode a { /* Corrected selector */
+    color: var(--interactive-blue);
+}
+body.dark-mode a:hover { /* Corrected selector */
+    color: var(--sky-blue-deep);
+}
+
 
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
 .section-padding {
-    padding: 120px 0;
+    padding: var(--spacing-xl) 0;
     position: relative;
     overflow: hidden;
 }
 
 .bg-light {
-    background-color: #f9fafc;
+    background-color: var(--bg-light-secondary);
+}
+body.dark-mode .bg-light { /* Corrected selector */
+    background-color: var(--bg-dark-secondary);
 }
 
-/* Custom Cursor */
+
+/* Custom Cursor - Keep if desired, can be subtle */
 .cursor {
     position: fixed;
-    width: 10px;
-    height: 10px;
+    width: 8px; /* Smaller cursor dot */
+    height: 8px;
     background-color: var(--primary-color);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: var(--z-tooltip);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    transition: width 0.15s var(--transition-fast), height 0.15s var(--transition-fast), background-color 0.15s var(--transition-fast);
     display: none;
 }
 
@@ -188,114 +253,117 @@ img {
     }
 }
 
-/* Section Title */
+/* Section Title - Cleaner Look */
 .section-title {
-    margin-bottom: 60px;
+    margin-bottom: var(--spacing-lg); /* Use spacing variables */
 }
 
 .section-title .subtitle {
     display: inline-block;
-    font-size: 16px;
+    font-size: 0.9rem; /* Slightly smaller */
     font-weight: 500;
-    color: var(--primary-color);
-    margin-bottom: 15px;
+    color: var(--text-secondary); /* More subtle subtitle color */
+    margin-bottom: var(--spacing-sm);
     position: relative;
-    padding: 5px 15px;
-    background-color: rgba(10, 132, 255, 0.1);
-    border-radius: 20px;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: rgba(0, 122, 255, 0.08);
+    border-radius: var(--border-radius-md);
+}
+body.dark-mode .section-title .subtitle { /* Corrected selector */
+    color: var(--text-light);
+    opacity: 0.7;
+    background-color: rgba(0, 122, 255, 0.15);
 }
 
+
 .section-title h2 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
     color: var(--dark-color);
+}
+body.dark-mode .section-title h2 { /* Corrected selector */
+    color: var(--text-light);
 }
 
 .title-separator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-}
-
-.title-separator span {
-    display: inline-block;
-    height: 4px;
-    border-radius: 2px;
+    display: block;
+    width: 50px;
+    height: 3px;
     background-color: var(--primary-color);
+    margin: 0 auto var(--spacing-md) auto;
+    border-radius: 1.5px;
+}
+body.dark-mode .title-separator { /* Corrected selector */
+    background-color: var(--primary-color); /* This might be fine, or use a lighter accent for dark mode */
 }
 
-.title-separator span:nth-child(1) {
-    width: 15px;
-}
 
-.title-separator span:nth-child(2) {
-    width: 30px;
-}
-
-.title-separator span:nth-child(3) {
-    width: 15px;
-}
-
-/* Buttons */
+/* Buttons - Apple-like Styling */
 .btn {
-    padding: 12px 30px;
-    border-radius: var(--border-radius-xl);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 14px;
-    transition: var(--transition-normal);
+    padding: var(--spacing-sm) var(--spacing-lg); /* Adjusted padding */
+    border-radius: var(--border-radius-md); /* Consistent border radius */
+    font-weight: 500; /* Medium weight */
+    text-transform: none; /* No uppercase */
+    font-size: 0.95rem;
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
     position: relative;
     overflow: hidden;
     z-index: var(--z-normal);
-    letter-spacing: 1px;
-    border: none;
+    letter-spacing: 0.2px; /* Subtle letter spacing */
+    border: 1px solid transparent; /* Base for outline buttons */
 }
 
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    z-index: -1;
-    transform: translateX(-100%) rotate(45deg);
-    transition: var(--transition-normal);
-}
-
-.btn:hover::before {
-    transform: translateX(100%) rotate(45deg);
+.btn::before { /* Remove the shine effect for now, can be added back if desired */
+    display: none;
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
+    background-color: var(--primary-color);
     color: #fff;
-    box-shadow: var(--box-shadow-sm);
+    box-shadow: none; /* Remove default shadow, rely on hover/active */
 }
 
 .btn-primary:hover {
-    background: var(--gradient-secondary);
-    box-shadow: var(--box-shadow-md);
-    transform: translateY(-3px);
+    background-color: #0066CC; /* Darken primary color on hover */
+    color: #fff;
+    box-shadow: var(--box-shadow-sm); /* Subtle shadow on hover */
+    transform: translateY(-1px); /* Slight lift */
 }
+.btn-primary:active {
+    background-color: #0052A3; /* Even darker on active */
+    transform: translateY(0px);
+    box-shadow: none;
+}
+
 
 .btn-outline {
     background: transparent;
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 1.5px solid var(--primary-color); /* Thicker border for outline */
 }
 
 .btn-outline:hover {
-    background: var(--primary-color);
-    color: #fff;
-    transform: translateY(-3px);
-    box-shadow: var(--box-shadow-sm);
+    background: rgba(0, 122, 255, 0.08); /* Very subtle background */
+    color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+.btn-outline:active {
+    background: rgba(0, 122, 255, 0.15);
+    transform: translateY(0px);
+}
+body.dark-mode .btn-outline { /* Corrected selector */
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+body.dark-mode .btn-outline:hover { /* Corrected selector */
+    background: rgba(0, 122, 255, 0.2);
+    color: var(--primary-color);
 }
 
-.btn-glow {
+
+.btn-glow { /* Re-evaluate glow effect, make it more subtle if kept */
     position: relative;
 }
 
@@ -306,17 +374,18 @@ img {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: var(--gradient-primary);
-    border-radius: var(--border-radius-xl);
+    background: var(--primary-color);
+    border-radius: var(--border-radius-md); /* Match button's radius */
     z-index: -2;
     opacity: 0;
     transition: var(--transition-normal);
+    filter: blur(8px); /* Softer blur */
 }
 
 .btn-glow:hover::after {
-    opacity: 0.4;
-    filter: blur(10px);
+    opacity: 0.25; /* Reduced opacity */
 }
+
 
 /* Text Effects */
 .gradient-text {
@@ -327,69 +396,99 @@ img {
     color: transparent; /* Fallback for browsers that don't support -webkit-text-fill-color */
 }
 
-/* Navbar */
+/* Navbar - Apple Inspired */
 .navbar {
-    padding: 15px 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all var(--transition-normal);
-    z-index: 1000;
+    padding: var(--spacing-md) 0; /* Use spacing variables */
+    background-color: rgba(255, 255, 255, 0.7); /* More translucent */
+    backdrop-filter: blur(20px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(20px);
+    transition: background-color var(--transition-normal), box-shadow var(--transition-normal), padding var(--transition-normal);
+    z-index: var(--z-fixed);
+    border-bottom: 1px solid transparent; /* For scrolled state */
 }
 
-.dark-theme .navbar {
-    background-color: rgba(18, 18, 18, 0.8);
+body.dark-mode .navbar { /* Changed .dark-theme to body.dark-mode */
+    background-color: rgba(29, 29, 31, 0.7); /* Dark translucent */
+    border-bottom: 1px solid transparent;
 }
 
 .navbar-scrolled {
-    padding: 10px 0;
-    box-shadow: var(--box-shadow-md);
+    padding: var(--spacing-sm) 0; /* Slightly reduced padding on scroll */
+    background-color: rgba(250, 250, 250, 0.85); /* Less translucent on scroll */
+    box-shadow: 0 0.5px 0 rgba(0,0,0,0.12); /* Subtle bottom border like Apple */
+}
+
+body.dark-mode .navbar-scrolled { /* Changed .dark-theme to body.dark-mode */
+    background-color: rgba(20, 20, 22, 0.85);
+    box-shadow: 0 0.5px 0 rgba(255,255,255,0.12);
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-size: 24px;
-    color: var(--primary-color) !important;
+    font-weight: 600; /* Adjusted font weight */
+    font-size: 1.25rem; /* Slightly smaller */
+    color: var(--dark-color) !important;
+    transition: color var(--transition-fast), opacity var(--transition-fast);
 }
+body.dark-mode .navbar-brand { /* Changed .dark-theme to body.dark-mode */
+    color: var(--text-light) !important;
+}
+.navbar-brand:hover {
+    color: var(--primary-color) !important;
+    opacity: 0.8;
+}
+body.dark-mode .navbar-brand:hover { /* Changed .dark-theme to body.dark-mode */
+    color: var(--primary-color) !important;
+    opacity: 0.8;
+}
+
 
 .navbar-nav .nav-item {
     position: relative;
-    margin-left: 10px;
+    margin-left: var(--spacing-sm);
 }
 
 .navbar-nav .nav-link {
-    color: var(--text-color) !important;
+    color: var(--text-secondary) !important; /* Use secondary text color */
     font-weight: 500;
-    padding: 8px 15px;
+    font-size: 0.9rem; /* Slightly smaller nav links */
+    padding: var(--spacing-xs) var(--spacing-md);
     position: relative;
-    transition: var(--transition-normal);
+    transition: color var(--transition-fast);
+    border-radius: var(--border-radius-sm);
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: var(--primary-color) !important;
+    background-color: rgba(0, 122, 255, 0.1); /* Subtle background on hover/active */
+}
+body.dark-mode .navbar-nav .nav-link { /* Changed .dark-theme to body.dark-mode */
+    color: var(--text-light) !important;
+    opacity: 0.8;
+}
+body.dark-mode .navbar-nav .nav-link:hover, /* Changed .dark-theme to body.dark-mode */
+body.dark-mode .navbar-nav .nav-link.active { /* Changed .dark-theme to body.dark-mode */
+    color: var(--primary-color) !important;
+    opacity: 1;
+    background-color: rgba(0, 122, 255, 0.2);
 }
 
-.navbar-nav .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: var(--transition-normal);
-    transform: translateX(-50%);
+
+.navbar-nav .nav-link::after { /* Remove the underline style */
+    display: none;
 }
 
-.navbar-nav .nav-link:hover::after,
-.navbar-nav .nav-link.active::after {
-    width: 30px;
+.navbar-toggler {
+    border: none;
+    padding: 0;
+}
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
 .toggler-icon {
-    width: 30px;
-    height: 20px;
+    width: 24px; /* Slightly smaller toggler */
+    height: 18px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -399,13 +498,17 @@ img {
 .toggler-icon span {
     display: block;
     width: 100%;
-    height: 2px;
+    height: 2px; /* Thinner lines */
     background-color: var(--dark-color);
-    transition: var(--transition-normal);
+    border-radius: 1px;
+    transition: transform var(--transition-normal), opacity var(--transition-fast);
+}
+body.dark-mode .toggler-icon span { /* Changed .dark-theme to body.dark-mode */
+    background-color: var(--text-light);
 }
 
 .navbar-toggler[aria-expanded="true"] .toggler-icon span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg); /* Adjusted for thinner lines */
 }
 
 .navbar-toggler[aria-expanded="true"] .toggler-icon span:nth-child(2) {
@@ -416,47 +519,70 @@ img {
     transform: translateY(-9px) rotate(-45deg);
 }
 
+/* Theme Toggle - Apple Style (Updated from previous plan) */
 .theme-toggle {
-    width: 60px;
-    height: 30px;
-    background-color: rgba(10, 132, 255, 0.1);
-    border-radius: 30px;
+    width: 50px;
+    height: 28px;
+    background-color: var(--medium-light-gray);
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
+    padding: 3px;
     position: relative;
     cursor: pointer;
+    transition: background-color var(--transition-normal);
+}
+body.dark-mode .theme-toggle { /* Changed .dark-theme to body.dark-mode */
+    background-color: #3A3A3C; /* Darker gray for dark mode */
 }
 
 .theme-toggle i {
-    font-size: 14px;
-    color: var(--dark-color);
+    font-size: 0.8rem;
+    color: var(--text-secondary); /* Default icon color */
     z-index: var(--z-normal);
+    transition: color var(--transition-normal);
+    width: 22px;
+    text-align: center;
 }
 
+/* Specific icon colors if needed, or rely on general color for active state */
 .theme-toggle .fa-sun {
-    color: #f1c40f;
+    /* color: #848388; default sun color, can be overridden by active state */
+}
+body.dark-mode .theme-toggle .fa-sun {
+    color: #FFD580; /* Brighter sun for dark mode active */
 }
 
 .theme-toggle .fa-moon {
-    color: #2c3e50;
+    color: #4A4A4A; /* Moon color for light mode active */
+}
+body.dark-mode .theme-toggle .fa-moon {
+   /* color: #848388; default moon color */
 }
 
 .theme-toggle-ball {
     position: absolute;
-    left: 5px;
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
+    left: 3px;
+    top: 3px;
+    width: 22px;
+    height: 22px;
+    background-color: var(--cloud-white);
     border-radius: 50%;
-    transition: var(--transition-normal);
-    box-shadow: var(--box-shadow-sm);
+    transition: transform var(--transition-normal);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 body.dark-mode .theme-toggle-ball {
-    left: 35px;
+    transform: translateX(22px);
 }
+/* Icon visibility based on theme */
+body:not(.dark-mode) .theme-toggle .fa-sun { display: none; }
+body:not(.dark-mode) .theme-toggle .fa-moon { display: block; }
+
+body.dark-mode .theme-toggle .fa-sun { display: block; }
+body.dark-mode .theme-toggle .fa-moon { display: none; }
+
 
 /* Hero Section */
 .hero-section {
@@ -519,26 +645,35 @@ body.dark-mode .theme-toggle-ball {
     gap: 15px;
 }
 
+/* Social Icons - Footer / Contact */
 .social-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px; /* Slightly smaller */
+    height: 36px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--medium-light-gray); /* Use a theme gray */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: 18px;
-    transition: var(--transition-normal);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-dark-secondary); /* Use theme text color */
+    font-size: 1rem; /* Adjusted size */
+    transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    border: none;
+}
+body.dark-mode .social-icon { /* Corrected selector */
+    background-color: var(--bg-dark-secondary);
+    color: var(--text-light-secondary);
 }
 
 .social-icon:hover {
-    background-color: #fff;
-    color: var(--primary-color);
-    transform: translateY(-5px);
+    background-color: var(--interactive-blue);
+    color: var(--cloud-white);
+    transform: translateY(-3px) scale(1.05);
 }
+body.dark-mode .social-icon:hover { /* Corrected selector */
+    background-color: var(--interactive-blue); /* Keeping hover consistent for dark mode */
+    color: var(--cloud-white);
+}
+
 
 .hero-image-container {
     position: relative;
@@ -745,123 +880,135 @@ body.dark-mode .theme-toggle-ball {
     }
 }
 
-/* About Section */
+/* About Section - Cloud Theme Update */
+#about {
+    background: var(--gradient-sky-light);
+}
+.dark-theme #about {
+    background: var(--bg-dark-secondary);
+}
+
+/* Skills Section - Cloud Theme Update */
+#skills {
+    background: var(--gradient-sky-light); /* Applying similar subtle gradient */
+}
+body.dark-mode #skills {
+    background: var(--bg-dark-secondary); /* Consistent dark mode background */
+}
+
+
 .about-img {
     position: relative;
-    padding: 20px;
+    padding: var(--spacing-md); /* Use theme spacing */
+    display: flex; /* For centering image if needed */
+    justify-content: center;
+    align-items: center;
 }
 
 .img-box {
     position: relative;
-    height: 400px;
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    box-shadow: var(--box-shadow-md);
+    max-width: 380px; /* Control max image width */
+    margin: 0 auto; /* Center if col is wider */
+    border-radius: var(--border-radius-lg); /* Apply rounding to the container */
+    overflow: hidden; /* Keep this for the image */
+    box-shadow: var(--box-shadow-lg); /* Apply soft shadow to the image box */
 }
 
-.img-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradient-primary);
-    z-index: 1;
-}
-
-.img-overlay {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border-radius: var(--border-radius-md);
-    z-index: 2;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+/* Remove .img-backdrop and .img-overlay styles as they are removed from HTML */
 
 .img-box img {
-    position: relative;
-    z-index: 3;
+    /* position: relative; no longer needed */
+    /* z-index: 3; no longer needed */
     width: 100%;
-    height: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 450px; /* Max height for the image */
     object-fit: cover;
-    border-radius: var(--border-radius-md);
-    padding: 20px;
+    display: block; /* Remove extra space below image */
+    /* border-radius: var(--border-radius-md); No longer needed if img-box handles rounding */
+    /* padding: 20px; Remove padding around image */
 }
 
 .experience-badge {
     position: absolute;
-    bottom: 30px;
-    right: 0;
-    background: var(--primary-color);
-    color: #fff;
-    padding: 15px;
-    border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
-    z-index: 4;
-    box-shadow: var(--box-shadow-md);
+    bottom: var(--spacing-md); /* Use theme spacing */
+    right: var(--spacing-md); /* Use theme spacing */
+    background: var(--interactive-blue); /* Use theme color */
+    color: var(--cloud-white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm); /* Smaller radius for badge */
+    /* z-index: 4; Default stacking context should be fine */
+    box-shadow: var(--box-shadow-sm);
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .exp-number {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1;
+    font-size: 1.5rem; /* Slightly smaller */
+    font-weight: 600;
 }
 
 .exp-text {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 5px;
+    font-size: 0.75rem; /* Slightly smaller */
+    margin-top: var(--spacing-xs);
 }
 
 .tech-stack {
     display: flex;
-    gap: 15px;
-    margin-top: 20px;
+    gap: var(--spacing-md); /* Use theme spacing */
+    margin-top: var(--spacing-lg); /* More space above tech stack */
     justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .tech-item {
-    width: 50px;
-    height: 50px;
+    width: 48px; /* Slightly smaller */
+    height: 48px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--cloud-white); /* Consistent with light theme */
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: var(--box-shadow-sm);
-    font-size: 24px;
-    color: var(--primary-color);
-    transition: var(--transition-normal);
+    font-size: 1.4rem; /* Slightly smaller icons */
+    color: var(--interactive-blue);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     position: relative;
+}
+.dark-theme .tech-item {
+    background-color: var(--bg-dark-secondary);
+    color: var(--sky-blue-deep);
 }
 
 .tech-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px) scale(1.05); /* Refined hover */
     box-shadow: var(--box-shadow-md);
 }
 
-.tech-item::before {
+.tech-item::before { /* Tooltip style - ensure it's visible */
     content: attr(data-tooltip);
     position: absolute;
-    bottom: -30px;
+    bottom: calc(100% + var(--spacing-sm)); /* Position above the icon */
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--dark-color);
-    color: #fff;
-    padding: 5px 10px;
+    background-color: var(--text-dark-primary);
+    color: var(--cloud-white-soft);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-sm);
-    font-size: 12px;
+    font-size: 0.75rem;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition-normal);
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
     white-space: nowrap;
+    z-index: var(--z-tooltip); /* Ensure tooltip is on top */
 }
+.dark-theme .tech-item::before {
+    background-color: var(--cloud-white-soft);
+    color: var(--text-dark-primary);
+}
+
 
 .tech-item:hover::before {
     opacity: 1;
@@ -869,88 +1016,130 @@ body.dark-mode .theme-toggle-ball {
 }
 
 .about-text {
-    padding: 20px;
+    padding: var(--spacing-lg); /* More generous padding */
+}
+.dark-theme .about-text {
+    /* No specific background change, inherits from section */
 }
 
 .about-tagline {
     display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    padding: 5px 15px;
-    background-color: rgba(10, 132, 255, 0.1);
-    border-radius: 20px;
+    font-size: 0.9rem; /* Adjusted size */
+    font-weight: 500;
+    color: var(--interactive-blue); /* Use theme color */
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
+    padding: var(--spacing-xs) var(--spacing-md); /* Use theme spacing */
+    background-color: rgba(var(--interactive-blue-rgb), 0.1); /* Use theme color with alpha */
+    border-radius: var(--border-radius-xl); /* Pill shape */
+}
+.dark-theme .about-tagline {
+    color: var(--sky-blue-deep);
+    background-color: rgba(var(--sky-blue-deep-rgb, 114,194,243), 0.15); /* Define --sky-blue-deep-rgb if needed */
 }
 
 .about-text h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: var(--dark-color);
+    font-size: 1.75rem; /* Adjusted for hierarchy */
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
+    color: var(--text-dark-primary);
+}
+.dark-theme .about-text h3 {
+    color: var(--text-light-primary);
 }
 
 .about-text p {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #555;
+    margin-bottom: var(--spacing-md); /* Use theme spacing */
+    font-size: 1rem; /* Standard body text size */
+    color: var(--text-dark-secondary); /* Softer text color */
+    line-height: 1.7; /* Improved readability */
+}
+.dark-theme .about-text p {
+    color: var(--text-light-secondary);
 }
 
 .about-stats {
     display: flex;
     justify-content: space-between;
-    margin: 30px 0;
+    margin: var(--spacing-lg) 0; /* Use theme spacing */
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--cloud-gray-light);
+    border-bottom: 1px solid var(--cloud-gray-light);
+}
+.dark-theme .about-stats {
+    border-top: 1px solid rgba(var(--text-light-rgb), 0.1);
+    border-bottom: 1px solid rgba(var(--text-light-rgb), 0.1);
 }
 
 .stat-item {
     text-align: center;
+    padding: 0 var(--spacing-sm);
 }
 
 .stat-number {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 5px;
+    font-size: 2rem; /* Adjusted size */
+    font-weight: 600;
+    color: var(--interactive-blue); /* Use theme color */
+    margin-bottom: var(--spacing-xs); /* Use theme spacing */
     line-height: 1;
+}
+.dark-theme .stat-number {
+    color: var(--sky-blue-deep);
 }
 
 .stat-text {
-    font-size: 14px;
-    color: #555;
+    font-size: 0.8rem; /* Adjusted size */
+    color: var(--text-dark-secondary);
+}
+.dark-theme .stat-text {
+    color: var(--text-light-secondary);
 }
 
 .about-contact {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: var(--spacing-md); /* Use theme spacing */
+    margin-bottom: var(--spacing-lg); /* Use theme spacing */
 }
 
-.contact-item {
+.contact-item { /* Assuming this is for .about-contact .contact-item */
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--spacing-sm); /* Use theme spacing */
+    background-color: rgba(var(--interactive-blue-rgb),0.05);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+}
+.dark-theme .contact-item {
+    background-color: rgba(var(--sky-blue-deep-rgb, 114,194,243),0.1);
 }
 
+
 .contact-item i {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(10, 132, 255, 0.1);
-    color: var(--primary-color);
+    width: 36px; /* Adjusted size */
+    height: 36px;
+    background-color: transparent; /* Icon bg handled by .contact-item */
+    color: var(--interactive-blue);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 1rem; /* Adjusted size */
+}
+.dark-theme .contact-item i {
+    color: var(--sky-blue-deep);
 }
 
 .contact-item span {
-    font-size: 14px;
-    color: #555;
+    font-size: 0.9rem; /* Adjusted size */
+    color: var(--text-dark-secondary);
+}
+.dark-theme .contact-item span {
+    color: var(--text-light-secondary);
 }
 
 .about-btns {
     display: flex;
-    gap: 15px;
+    gap: var(--spacing-md); /* Use theme spacing */
+    margin-top: var(--spacing-lg); /* Add margin top */
 }
 
 .shape-divider {
@@ -1613,98 +1802,112 @@ body.dark-mode .theme-toggle-ball {
 
 /* Footer */
 .footer {
-    background-color: var(--dark-color);
-    color: #fff;
-    padding: 50px 0 20px;
+    background-color: var(--bg-dark-primary); /* Use dark theme background */
+    color: var(--text-light-secondary); /* Lighter text for footer */
+    padding: var(--spacing-xl) 0 var(--spacing-md) 0; /* Theme spacing */
+    text-align: center; /* Center align footer content */
 }
 
 .footer-logo h3 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #fff;
+    font-size: 1.5rem; /* Adjusted size */
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-light-primary); /* Brighter color for logo/name */
+    font-weight: 500;
 }
 
 .footer-social {
-    margin-bottom: 20px;
+    margin-bottom: var(--spacing-md);
 }
 
-.footer-social a {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 5px;
-    font-size: 18px;
-    transition: var(--transition);
-}
-
-.footer-social a:hover {
-    background-color: var(--primary-color);
-}
+/* .footer-social a uses .social-icon styles which are already themed */
 
 .footer-copyright p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem; /* Slightly smaller copyright text */
+    color: var(--text-light-secondary);
+    opacity: 0.8; /* Make it a bit more subtle */
 }
 
-/* Modal Styles */
+/* Modal Styles - Apple Inspired */
 .modal-content {
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg); /* Consistent rounding */
     overflow: hidden;
-    border: none;
+    border: none; /* Remove default border */
+    background-color: var(--bg-light-primary);
+    box-shadow: var(--box-shadow-lg);
+}
+body.dark-mode .modal-content { /* Corrected selector */
+    background-color: var(--bg-dark-secondary);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
 }
 
 .modal-header {
-    background-color: var(--primary-color);
-    color: #fff;
-    border-bottom: none;
+    background-color: transparent;
+    color: var(--text-dark-primary);
+    border-bottom: 1px solid var(--cloud-gray-light);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+body.dark-mode .modal-header { /* Corrected selector */
+    color: var(--text-light-primary);
+    border-bottom: 1px solid rgba(var(--text-light-rgb), 0.15);
 }
 
 .modal-title {
-    font-weight: 700;
+    font-weight: 600;
+    font-size: 1.25rem;
 }
 
 .modal-body {
-    padding: 30px;
+    padding: var(--spacing-lg);
 }
 
 .modal-body h4, .modal-body h5 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
+    color: var(--text-dark-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+body.dark-mode .modal-body h4,
+body.dark-mode .modal-body h5 { /* Corrected selector */
+    color: var(--text-light-primary);
 }
 
+
 .modal-body ul {
-    padding-left: 20px;
-    margin-bottom: 20px;
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
 }
 
 .modal-body ul li {
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark-secondary);
+}
+body.dark-mode .modal-body ul li { /* Corrected selector */
+    color: var(--text-light-secondary);
 }
 
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-.tech-tags span {
-    background-color: rgba(10, 132, 255, 0.1);
-    color: var(--primary-color);
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-}
+/* .tech-tags styling might be in modern-projects.css, review there */
 
 .modal-footer {
-    border-top: none;
+    border-top: 1px solid var(--cloud-gray-light);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: transparent;
 }
+body.dark-mode .modal-footer { /* Corrected selector */
+    border-top: 1px solid rgba(var(--text-light-rgb), 0.15);
+}
+
+.btn-close {
+    filter: grayscale(1) opacity(0.7);
+}
+body.dark-mode .btn-close { /* Corrected selector */
+    filter: brightness(0) invert(1) opacity(0.7);
+}
+.btn-close:hover {
+    filter: grayscale(0) opacity(1);
+}
+body.dark-mode .btn-close:hover { /* Corrected selector */
+    filter: brightness(0) invert(1) opacity(1);
+}
+
 
 /* Responsive Styles */
 @media (max-width: 991px) {
